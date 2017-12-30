@@ -4,7 +4,7 @@
 namespace models;
 
 
-class post
+class posts
 {
     private $id;
     private $title;
