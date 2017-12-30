@@ -70,4 +70,35 @@ class PostsManager extends Manager
         return $this->db->query('SELECT COUNT(*) FROM posts')->fetchColumn();
     }
 
+    public function pagination($start, $nbr)
+    {
+        $posts = [];
+
+        $req = $this->db->prepare('SELECT id, title, content, DATE_FORMAT(post_date, \'%d.%m.%Y\')AS postDate FROM posts LIMIT :start, :nbr');
+        $req->bindValue(':start', $start, \PDO::PARAM_INT);
+        $req->bindValue(':nbr', $nbr, \PDO::PARAM_INT);
+
+        if (!$req->execute()) {
+            throw new \Exception('Impossible de sélectionner les articles pour la pagination.');
+        } else {
+            while ($data = $req->fetch(\PDO::FETCH_ASSOC)) {
+                $posts[] = new Posts($data);
+            }
+            return $posts;
+        }
+    }
+
+    public function exists($id)
+    {
+        if (is_int($id)) {
+            return (bool) $this->db->query('SELECT COUNT(*) FROM posts WHERE id = ' . $id)->fetchColumn();
+        } else {
+            $req = $this->db->prepare('SELECT COUNT(*) FROM posts WHERE title = :title');
+            $req->execute([':title' => $id]);
+
+            return (bool) $req->fetchColumn();
+        }
+    }
+
+
 }
