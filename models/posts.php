@@ -4,12 +4,17 @@
 namespace models;
 
 
-class posts
+class posts extends Hydrating
 {
     private $id;
     private $title;
     private $content;
     private $postDate;
+
+    public function __construct(array $data)
+    {
+        parent::__construct($data);
+    }
 
     /**
      * @return int

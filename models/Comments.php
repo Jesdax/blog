@@ -4,7 +4,7 @@
 namespace models;
 
 
-class Comments
+class Comments extends Hydrating
 {
     private $id;
     private $postId;
@@ -12,6 +12,11 @@ class Comments
     private $content;
     private $reported;
     private $commentDate;
+
+    public function __construct(array $data)
+    {
+        parent::__construct($data);
+    }
 
     /**
      * @return int
