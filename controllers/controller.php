@@ -1,5 +1,16 @@
 <?php
 
+## Loader ##
+
+function loadClass($class)
+{
+    require('model/' . $class . '.php');
+}
+spl_autoload_register('loadClass');
+
+
+## Fonctions généraux ##
+
 function listPosts($currentPage)
 {
     $postsManager = new \models\PostsManager();
@@ -13,7 +24,9 @@ function listPosts($currentPage)
         $start = ($currentPage - 1) * $postPerPage;
 
         $posts = $postsManager->pagination($start, $postPerPage);
+
         /* require la vue de la page home */
+        require ('../views/frontend/home.php');
     }
  }
 
@@ -30,7 +43,9 @@ function listPosts($currentPage)
              throw new Exception('Impossible de charger l\'article.');
          } else {
              $comments = $commentsManager->getComments($id);
+
              /* Require la vue front de postView */
+             require ('../views/frontend/postView.php');
          }
      }
  }
@@ -51,3 +66,46 @@ function listPosts($currentPage)
          }
      }
  }
+
+ ##  Session ##
+
+
+function connexion($login, $password)
+{
+    $usersManager = new \models\UsersManager();
+
+    if (!$usersManager->exists($login)) {
+        throw new Exception('Identifiant incorrect.');
+    } else {
+        $user = $usersManager->get($login);
+        if (!password_verify($password, $user->getPassword())) {
+            throw new Exception('Mot de passe incorrect.');
+        } else {
+            $_SESSION['administrateur'] = $user;
+            header('Location: index?backend=backOfficeView');
+        }
+    }
+}
+
+function isConnect()
+{
+    return isset($_SESSION['administrateur']);
+}
+
+function logout()
+{
+    if (!isset($_SESSION['administrateur'])) {
+        throw new Exception('Aucune session n\'est en cours.');
+    } else {
+        session_destroy();
+        header('Location: index.php');
+        exit();
+    }
+}
+
+## Partie administrateur ##
+
+
+
+
+
