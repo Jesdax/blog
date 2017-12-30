@@ -4,7 +4,7 @@
 namespace models;
 
 
-class posts extends Hydrating
+class Posts extends Hydrating
 {
     private $id;
     private $title;
