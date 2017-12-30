@@ -5,15 +5,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="Jean Forteroche">
-        <link rel="icon" href="images/favicon.ico">
+        <link rel="icon" href="../public/images/favicon.ico">
 
         <title><?= $title ;?></title>
 
         <!-- Bootstrap core CSS -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="../public/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom styles for this template -->
-        <link href="css/starter.css" rel="stylesheet">
+        <link href="../public/css/starter.css" rel="stylesheet">
     </head>
     <body>
         <header>
