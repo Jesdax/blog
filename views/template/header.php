@@ -26,13 +26,13 @@
                 <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="index.php?action=home">Accueil <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="index.php?fontend=home">Accueil <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php?action=tickets">Articles</a>
+                            <a class="nav-link" href="index.php?frontend=tickets">Articles</a>
                         </li>
                         <li class="nav-item offset-10">
-                            <a class="nav-link" href="index.php?back=backOfficeView">Administration</a>
+                            <a class="nav-link" href="index.php?backend=backOfficeView">Administration</a>
                         </li>
                     </ul>
 
@@ -50,10 +50,10 @@
             <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?back=backOfficeView">Administration</a>
+                        <a class="nav-link" href="index.php?backend=backOfficeView">Administration</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?action=tickets">Articles</a>
+                        <a class="nav-link" href="index.php?frontend=tickets">Articles</a>
                     </li>
                 </ul>
             </nav>
@@ -64,7 +64,7 @@
                     </li>
                 <?php /*} else {;*/?>
                     <li class="nav-item">
-                        <a href="index.php?back=backOfficeView" class="btn btn-outline-success my-2 my-sm-0">Se connecter</a>
+                        <a href="index.php?backend=backOfficeView" class="btn btn-outline-success my-2 my-sm-0">Se connecter</a>
                     </li>
                 <?php /*} ;*/?>
             </ul>
