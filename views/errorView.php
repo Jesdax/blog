@@ -1,0 +1,1 @@
+<div class="alert-danger"><p>Erreur 404<?= $errorMessage; ?></p></div>
