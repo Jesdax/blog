@@ -34,3 +34,20 @@ function listPosts($currentPage)
          }
      }
  }
+
+ function postComment($postId, $author, $comment, $page)
+ {
+     $commentsManager = new \models\CommentsManager();
+     $postsManager = new \models\PostsManager();
+
+     if (!$postsManager->exists($postId)) {
+         throw new Exception('Cet article n\'existe pas.');
+     } else {
+         $affectedLines = $commentsManager->postComment($postId, $author, $comment);
+         if ($affectedLines === false) {
+             throw new Exception('Ce commentaire n\'a pas pu être publié.');
+         } else {
+             header('Location: index.php?front=post&page='. $page.'&id='.$postId);
+         }
+     }
+ }
