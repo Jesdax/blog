@@ -67,6 +67,27 @@ function listPosts($currentPage)
      }
  }
 
+ function reportComment($id, $postId, $page)
+ {
+     $commentsManager = new \models\CommentsManager();
+     $postsManager = new \models\PostsManager();
+
+     if (!$commentsManager->exists($id)) {
+         throw new Exception('Ce commentaire n\'existe pas.');
+     } else {
+         $affectedLines = $commentsManager->report($id);
+         if ($affectedLines === false) {
+             throw new Exception('Ce commentaire n\'a pas pu être signalé.');
+         } else {
+             if (!$postsManager->exists($postId)) {
+                 throw new Exception('Cet article n\'existe pas.');
+             } else {
+                 header('Location: index.php?frontend=post&page='.$page.'&id='.$postId);
+             }
+         }
+     }
+ }
+
  ##  Session ##
 
 
@@ -106,6 +127,111 @@ function logout()
 ## Partie administrateur ##
 
 
+function addPost($title, $content)
+{
+    $postsManager = new \models\PostsManager();
+    $affectedLines = $postsManager->addPost($title, $content);
 
+    if ($affectedLines === false) {
+        throw new Exception('Impossible d\'ajouter l\'article.');
+    } else {
+        header('Location: index.php?backend=backOfficeView');
+    }
+}
+
+function editPost($id)
+{
+    $postsManager = new \models\PostsManager();
+
+    if (!$postsManager->exists($id)) {
+        throw new Exception('Cet article n\'existe pas.');
+    } else {
+        $post = $postsManager->getPost($id);
+
+        /* require la vue backend d'edition d'article */
+        require('../views/backend/editPost.php');
+    }
+}
+
+function updatePost($id, $title, $content)
+{
+    $postsManager = new \models\PostsManager();
+
+    if (!$postsManager->exists($id)) {
+        throw new Exception('Cet article n\'existe pas.');
+    } else {
+        $affectedLines = $postsManager->update($id, $title, $content);
+        if ($affectedLines === false) {
+            throw new Exception('Impossible de mettre à jour l\'article');
+        } else {
+            header('Location: index.php?backend=listPosts');
+        }
+    }
+}
+
+function deletePost($postId)
+{
+    $postsManager = new \models\PostsManager();
+
+    if (!$postsManager->exists($postId)) {
+        throw new Exception('Cet article est perdu dans les lambes d\'internet ou n\'existe pas.');
+    } else {
+        $commentsManager = new \models\CommentsManager();
+        $commentsManager->deletePostComments($postId);
+        $affectedLines = $postsManager->delete($postId);
+        if ($affectedLines == 0) {
+            throw new Exception('Impossible de supprimer l\'article.');
+        } else {
+            header('Location: index.php?backend=listPosts');
+        }
+    }
+}
+
+function deleteComment($id)
+{
+    $commentsManager = new \models\CommentsManager();
+
+    if (!$commentsManager->exists($id)) {
+        throw new Exception('Ce commentaire n\'existe pas.');
+    } else {
+        $affectedLines = $commentsManager->delete($id);
+        if ($affectedLines == 0) {
+            throw new Exception('Impossible de supprimer ce commentaire.');
+        } else {
+            header('Location: index.php?backend=reported');
+        }
+    }
+}
+
+/* Dashboard administration */
+
+function backendListPosts()
+{
+    $postsManager = new \models\PostsManager();
+
+    $posts = $postsManager->getPosts();
+
+    /* require la vue backend de la liste des articles */
+    require('../views/backend/listPostsView.php');
+}
+
+function backOffice()
+{
+    $commentsManager = new \models\CommentsManager();
+    $postsManager = new \models\PostsManager();
+
+    /* require la vue backend du backoffice */
+    require('../views/backend/backOfficeView.php');
+}
+
+function reported()
+{
+    $commentsManager = new \models\CommentsManager();
+
+    $comments = $commentsManager->getReported();
+
+    /* require la vue backend des commentaires reportés */
+    require('../views/backend/commentsReported.php');
+}
 
 

@@ -37,7 +37,7 @@ class CommentsManager extends Manager
         return $comments;
     }
 
-    public function getComment($id)
+    public function get($id)
     {
         $req = $this->db->prepare('SELECT id, author, content, reported, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh/%imin/%ss\') AS commentDate FROM comments WHERE id = :id');
         $req->execute([':id' => $id]);
@@ -71,6 +71,11 @@ class CommentsManager extends Manager
         return $req;
     }
 
+    public function deletePostComments($postId)
+    {
+        $req = $this->db->exec('DELETE FROM comments WHERE postId = '. $postId);
+    }
+
     public function count()
     {
         return $this->db->query('SELECT COUNT(*) FROM comments')->fetchColumn();
@@ -80,4 +85,13 @@ class CommentsManager extends Manager
     {
         return $this->db->query('SELECT COUNT(*) FROM comments WHERE reported > 0')->fetchColumn();
     }
+
+    public function exists($id)
+    {
+        $req = $this->db->prepare('SELECT COUNT(*) FROM comments WHERE id = :id');
+        $req->execute([':id' => $id]);
+
+        return (bool) $req->fetchColumn();
+    }
+
 }
