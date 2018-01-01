@@ -1,7 +1,6 @@
 <?php
 
 
-namespace models;
 
 
 class PostsManager extends Manager

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace models;
+
 
 
 abstract class Hydrating

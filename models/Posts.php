@@ -1,7 +1,7 @@
 <?php
 
 
-namespace models;
+
 
 
 class Posts extends Hydrating

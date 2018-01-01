@@ -4,18 +4,26 @@
 
 function loadClass($class)
 {
-    require('model/' . $class . '.php');
+    require('models/'.$class.'.php');
 }
 spl_autoload_register('loadClass');
 
 
 ## Fonctions généraux ##
 
+function createAdmin($login, $password)
+{
+    $user = new UsersManager();
+    $user->add($login, $password);
+
+    header('Location: index.php');
+}
+
 function listPosts($currentPage)
 {
-    $postsManager = new \models\PostsManager();
+    $postsManager = new PostsManager();
     $totalPosts = $postsManager->count();
-    $postPerPage = 4;
+    $postPerPage = 1;
     $nbrPage = ceil($totalPosts / $postPerPage);
 
     if ($currentPage > $nbrPage) {
@@ -26,14 +34,14 @@ function listPosts($currentPage)
         $posts = $postsManager->pagination($start, $postPerPage);
 
         /* require la vue de la page home */
-        require ('../views/frontend/home.php');
+        require ('views/frontend/home.php');
     }
  }
 
  function post($id, $currentPage)
  {
-     $postsManager = new \models\PostsManager();
-     $commentsManager = new \models\CommentsManager();
+     $postsManager = new PostsManager();
+     $commentsManager = new CommentsManager();
 
      if (!$postsManager->exists($id)) {
          throw new Exception('Cet article n\'existe pas.');
@@ -45,15 +53,15 @@ function listPosts($currentPage)
              $comments = $commentsManager->getComments($id);
 
              /* Require la vue front de postView */
-             require ('../views/frontend/postView.php');
+             require ('views/frontend/postView.php');
          }
      }
  }
 
  function postComment($postId, $author, $comment, $page)
  {
-     $commentsManager = new \models\CommentsManager();
-     $postsManager = new \models\PostsManager();
+     $commentsManager = new CommentsManager();
+     $postsManager = new PostsManager();
 
      if (!$postsManager->exists($postId)) {
          throw new Exception('Cet article n\'existe pas.');
@@ -62,15 +70,15 @@ function listPosts($currentPage)
          if ($affectedLines === false) {
              throw new Exception('Ce commentaire n\'a pas pu être publié.');
          } else {
-             header('Location: index.php?front=post&page='. $page.'&id='.$postId);
+             header('Location: index.php?frontend=post&page='. $page.'&id='.$postId);
          }
      }
  }
 
  function reportComment($id, $postId, $page)
  {
-     $commentsManager = new \models\CommentsManager();
-     $postsManager = new \models\PostsManager();
+     $commentsManager = new CommentsManager();
+     $postsManager = new PostsManager();
 
      if (!$commentsManager->exists($id)) {
          throw new Exception('Ce commentaire n\'existe pas.');
@@ -88,18 +96,25 @@ function listPosts($currentPage)
      }
  }
 
+ function adminLog()
+ {
+     require('views/frontend/formAdminLog.php');
+ }
+
+
  ##  Session ##
 
 
 function connexion($login, $password)
 {
-    $usersManager = new \models\UsersManager();
+    $usersManager = new UsersManager();
 
     if (!$usersManager->exists($login)) {
         throw new Exception('Identifiant incorrect.');
     } else {
         $user = $usersManager->get($login);
         if (!password_verify($password, $user->getPassword())) {
+          //  echo '<pre>'; var_dump($password ,$user->getPassword());
             throw new Exception('Mot de passe incorrect.');
         } else {
             $_SESSION['administrateur'] = $user;
@@ -107,6 +122,7 @@ function connexion($login, $password)
         }
     }
 }
+
 
 function isConnect()
 {
@@ -129,7 +145,7 @@ function logout()
 
 function addPost($title, $content)
 {
-    $postsManager = new \models\PostsManager();
+    $postsManager = new PostsManager();
     $affectedLines = $postsManager->addPost($title, $content);
 
     if ($affectedLines === false) {
@@ -141,7 +157,7 @@ function addPost($title, $content)
 
 function editPost($id)
 {
-    $postsManager = new \models\PostsManager();
+    $postsManager = new PostsManager();
 
     if (!$postsManager->exists($id)) {
         throw new Exception('Cet article n\'existe pas.');
@@ -149,13 +165,13 @@ function editPost($id)
         $post = $postsManager->getPost($id);
 
         /* require la vue backend d'edition d'article */
-        require('../views/backend/editPost.php');
+        require('views/backend/editPost.php');
     }
 }
 
 function updatePost($id, $title, $content)
 {
-    $postsManager = new \models\PostsManager();
+    $postsManager = new PostsManager();
 
     if (!$postsManager->exists($id)) {
         throw new Exception('Cet article n\'existe pas.');
@@ -171,12 +187,12 @@ function updatePost($id, $title, $content)
 
 function deletePost($postId)
 {
-    $postsManager = new \models\PostsManager();
+    $postsManager = new PostsManager();
 
     if (!$postsManager->exists($postId)) {
         throw new Exception('Cet article est perdu dans les lambes d\'internet ou n\'existe pas.');
     } else {
-        $commentsManager = new \models\CommentsManager();
+        $commentsManager = new CommentsManager();
         $commentsManager->deletePostComments($postId);
         $affectedLines = $postsManager->delete($postId);
         if ($affectedLines == 0) {
@@ -189,7 +205,7 @@ function deletePost($postId)
 
 function deleteComment($id)
 {
-    $commentsManager = new \models\CommentsManager();
+    $commentsManager = new CommentsManager();
 
     if (!$commentsManager->exists($id)) {
         throw new Exception('Ce commentaire n\'existe pas.');
@@ -203,35 +219,52 @@ function deleteComment($id)
     }
 }
 
+function auth($id)
+{
+    $commentsManager = new CommentsManager();
+
+    if(!$commentsManager->exists($id)) {
+        throw new Exception('Ce commentaire n\'existe pas.');
+    } else {
+        $affectedLines = $commentsManager->auth($id);
+        if($affectedLines === false) {
+            throw new Exception('Ce commentaire n\'a pas pu être autorisé.');
+        } else {
+            header('Location: index.php?backend=reported');
+        }
+    }
+}
+
+
 /* Dashboard administration */
 
 function backendListPosts()
 {
-    $postsManager = new \models\PostsManager();
+    $postsManager = new PostsManager();
 
     $posts = $postsManager->getPosts();
 
     /* require la vue backend de la liste des articles */
-    require('../views/backend/listPostsView.php');
+    require('views/backend/listPostsView.php');
 }
 
 function backOffice()
 {
-    $commentsManager = new \models\CommentsManager();
-    $postsManager = new \models\PostsManager();
+    $commentsManager = new CommentsManager();
+    $postsManager = new PostsManager();
 
     /* require la vue backend du backoffice */
-    require('../views/backend/backOfficeView.php');
+    require('views/backend/backOfficeView.php');
 }
 
 function reported()
 {
-    $commentsManager = new \models\CommentsManager();
+    $commentsManager = new CommentsManager();
 
     $comments = $commentsManager->getReported();
 
     /* require la vue backend des commentaires reportés */
-    require('../views/backend/commentsReported.php');
+    require('views/backend/commentsReported.php');
 }
 
 

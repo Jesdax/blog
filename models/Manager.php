@@ -1,9 +1,9 @@
 <?php
 
 
-namespace models;
 
-use PDO;
+
+
 class Manager
 {
     protected function dbConnect()

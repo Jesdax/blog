@@ -1,9 +1,6 @@
 <?php
 
 
-namespace models;
-
-
 class CommentsManager extends Manager
 {
     private $db;
@@ -28,7 +25,7 @@ class CommentsManager extends Manager
     {
         $comments = [];
 
-        $req = $this->db->prepare('SELECT id, author, content, reported, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh/%imin/%ss\') AS commentDate FROM comments WHERE postId = :postId ORDER BY comment_date DESC');
+        $req = $this->db->prepare('SELECT id, author, content, reported, DATE_FORMAT(comment_date, \'%d.%m.%Y à %Hh%imin\') AS commentDate FROM comments WHERE postId = :postId ORDER BY comment_date DESC');
         $req->execute([':postId' => $postId]);
 
         while ($data = $req->fetch(\PDO::FETCH_ASSOC)) {
@@ -39,7 +36,7 @@ class CommentsManager extends Manager
 
     public function get($id)
     {
-        $req = $this->db->prepare('SELECT id, author, content, reported, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh/%imin/%ss\') AS commentDate FROM comments WHERE id = :id');
+        $req = $this->db->prepare('SELECT id, author, content, reported, DATE_FORMAT(comment_date, \'%d.%m.%Y à %Hh%imin\') AS commentDate FROM comments WHERE id = :id');
         $req->execute([':id' => $id]);
 
         return new Comments($req->fetch(\PDO::FETCH_ASSOC));
@@ -56,7 +53,7 @@ class CommentsManager extends Manager
     public function getReported()
     {
         $comments = [];
-        $req = $this->db->query('SELECT id, author, content, reported, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh/%imin/%ss\') AS commentDate FROM comments WHERE reported > 0 ORDER BY reported DESC');
+        $req = $this->db->query('SELECT id, author, content, reported, DATE_FORMAT(comment_date, \'%d.%m.%Y à %Hh%imin\') AS commentDate FROM comments WHERE reported > 0 ORDER BY reported DESC');
 
         while ($data = $req->fetch(\PDO::FETCH_ASSOC)) {
             $comments[] = new Comments($data);
@@ -92,6 +89,14 @@ class CommentsManager extends Manager
         $req->execute([':id' => $id]);
 
         return (bool) $req->fetchColumn();
+    }
+
+    public function auth($id)
+    {
+        $req = $this->db->prepare('UPDATE comments SET reported = 0 WHERE id = :id');
+        $affectedLines = $req->execute([':id' => $id]);
+
+        return $affectedLines;
     }
 
 }

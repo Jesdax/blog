@@ -1,8 +1,6 @@
 <?php
 
 
-namespace models;
-
 
 class Comments extends Hydrating
 {
