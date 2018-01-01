@@ -1,16 +1,6 @@
-<!DOCTYPE HTML>
-<html>
-    <head>
-        <title>Accueil</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-        <link rel="stylesheet" href="assets/css/main.css" />
-        <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-        <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-    </head>
-    <body>
-    <?php include('views/template/header.php'); ?>
+<?php
+$title = 'Accueil';
+include('views/template/header.php'); ?>
 
 
     <!-- Main -->
@@ -25,7 +15,7 @@
 
                         </div>
                         <div class="meta">
-                            <time class="published" datetime="2015-11-01"><?= $post->getPostDate(); ?></time>
+                            <time class="published" datetime="2017-12-01"><?= $post->getPostDate(); ?></time>
                             <span class="author name">Jean Forteroche</span>
                         </div>
                     </header>
@@ -65,8 +55,8 @@
 
         </div>
 
-        <!-- footer -->
-        <footer id="footer">
+        <!-- Sidebar -->
+        <section id="sidebar">
 
             <!-- Intro -->
             <section id="intro">
@@ -98,6 +88,7 @@
                 <p class="copyright">&copy; Copyright - 2017 Jean Forteroche - <a href="#">mentions légales</a>.</p>
             </section>
 
-        </footer>
-    </body>
+        </section>
+<?php include('views/template/scriptBody.php');?>
+</body>
 </html>

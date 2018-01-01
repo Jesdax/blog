@@ -1,19 +1,7 @@
 <?php
-include('views/template/headerBackend.php');
-if(!isset($_SESSION['administrateur'])) {
-    header('Location: index.php');
-} else {
-;?>
-
-
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Page d'articles</title>
-        <meta charset="utf-8">
-        <link href="public/css/bootstrap.css" rel="stylesheet">
-        <script type="text/javascript" src="tinymce/tinymce.min.js"></script>
-        <script type="text/javascript">
+$title = 'Modification d\'article';
+$scriptTinyMCE = '<script type="text/javascript" src="tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
             tinyMCE.init({
                 selector: "textarea",
                 plugins: "image, link, anchor, lists, table, textcolor colorpicker, charmap, contextmenu, help, hr, nonbreaking, preview, print, searchreplace, wordcount, visualblocks",
@@ -24,15 +12,16 @@ if(!isset($_SESSION['administrateur'])) {
                 forced_root_block: false,
                 force_br_newlines: true,
                 force_p_newlines: false});
-        </script>
-    </head>
-        <body>
-            <div class="container">
-                <?php if(isset($post)) { ;?>
-                    <p>
-                        <a href="index.php?backend=listPosts">Retour à la liste des articles</a>
-                    </p>
+        </script>';
 
+include('views/template/headerBackend.php');
+if(!isset($_SESSION['administrateur'])) {
+    header('Location: index.php');
+} else {
+;?>
+        <div id="main">
+            <section class="">
+                <?php if(isset($post)) { ;?>
                     <form class="col-lg-10 col-lg-offset-1" action="index.php" method="post">
                         <legend>Modifier un article</legend>
                         <div class="form-group">
@@ -47,11 +36,7 @@ if(!isset($_SESSION['administrateur'])) {
                         <input class="pull-right" type="submit" name="update" value="Mettre à jour" />
                     </form>
 
-                    <?php } else { ;?>
-
-                    <p>
-                        <a href="index.php?backend=backOfficeView">Retour</a>
-                    </p>
+                <?php } else { ;?>
 
                     <form class="col-lg-10 col-lg-offset-1" action="index.php" method="post">
                         <legend>Ajout d'un nouvel article</legend>
@@ -62,15 +47,22 @@ if(!isset($_SESSION['administrateur'])) {
                         <div class="form-group">
                             <label for="content">Contenu</label><br />
                             <textarea class="form-control" id="content" name="content"></textarea>
-                        </div>
-                        <input class="pull-right" type="submit" name="publy" value="Publier" />
+                        </div><br />
+                        <input class="pull-right" type="submit" name="publy" value="Publier l'article" />
                     </form>
 
-                    <?php } ;?>
 
-            </div>
+                <?php } ;?>
+
+            </section>
+
+            <p class="row">
+                <a href="index.php?backend=backOfficeView">Retour</a>
+
+            </p>
+        </div>
+
+            <?php include('views/template/scriptBody.php');?>
         </body>
     </html>
-    <?php
-}
-?>
+    <?php } ;?>

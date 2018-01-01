@@ -85,7 +85,7 @@ class CommentsManager extends Manager
 
     public function exists($id)
     {
-        $req = $this->db->prepare('SELECT COUNT(*) FROM comments WHERE id = :id');
+        $req = $this->db->prepare('SELECT id FROM comments WHERE id = :id');
         $req->execute([':id' => $id]);
 
         return (bool) $req->fetchColumn();

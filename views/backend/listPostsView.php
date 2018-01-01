@@ -1,22 +1,14 @@
 <?php
+$title = 'Liste d\'articles';
 include('views/template/headerBackend.php');
 if(!isset($_SESSION['administrateur'])) {
     header('Location: index.php');
 } else {
 ;?>
 
-    <!DOCTYPE html>
-    <html>
-        <head>
-            <title>Liste d'articles</title>
-            <meta charset="utf-8">
-            <link href="public/css/bootstrap.css" rel="stylesheet">
-            <link href="public/css/style.css" rel="stylesheet">
-        </head>
-        <body>
-            <p><a href="index.php?backend=backOfficeView">Retour</a></p>
+
                 <div class="container">
-                    <legend>Articles</legend>
+                    <div>Articles</div>
                     <div class="row">
 
                         <?php foreach($posts as $post) { ;?>
@@ -66,14 +58,17 @@ if(!isset($_SESSION['administrateur'])) {
                             </div>
                         </div>
                     </div>
+                    <p><a href="index.php?backend=backOfficeView" class="btn btn-default">Retour</a></p>
                 </div>
-            <script src = "public/js/jquery.js"></script>
-            <script src = "public/js/bootstrap.js"></script>
-            <script>
-                $('#delete').click(function(){
-                    $('#confirm').modal('show');
-                });
-            </script>
+    <script src = "public/js/jquery.js"></script>
+    <script src = "public/js/bootstrap.js"></script>
+    <script>
+        $('#delete').click(function(){
+            $('#confirm').modal('show');
+        });
+    </script>
+<?php include('views/template/scriptBody.php') ;?>
+
         </body>
     </html>
-    <?php } ;?>
+<?php } ;?>

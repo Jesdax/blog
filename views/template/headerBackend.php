@@ -3,10 +3,15 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title><?= $title ;?></title>
         <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
         <link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="stylesheet" href="public/css/main.css"/>
         <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
         <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+        <link href="public/css/panel.css" rel="stylesheet">
+        <?= $scriptTinyMCE ; ?><br />
+        <?= $scriptTinyMCE2 ; ?>
 
     </head>
 
@@ -16,7 +21,7 @@
 
         <!-- Header -->
         <header id="header">
-            <h4><a href="#">Billet simple pour l'Alaska</a></h4>
+            <h1><a href="#">Billet simple pour l'Alaska</a></h1>
             <nav class="links">
                 <ul>
                     <li><a href="index.php">Accueil</a></li>
@@ -43,6 +48,14 @@
                 </form>
             </section>
 
+            <!-- Links -->
+            <section>
+                <ul class="links">
+                    <li>
+                        <a href="index.php"><h3>Accueil</h3></a>
+                    </li>
+                </ul>
+            </section>
             <!-- Actions -->
             <section>
                 <?php if(isset($_SESSION['administrateur'])) { ;?>
@@ -58,12 +71,3 @@
             </section>
 
         </section>
-
-        <!-- Scripts -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/skel.min.js"></script>
-        <script src="assets/js/util.js"></script>
-        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-        <script src="assets/js/main.js"></script>
-    </body>
-</html>

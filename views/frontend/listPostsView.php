@@ -56,5 +56,6 @@ include('views/template/header.php');
         </div>
     </div>
 </div>
+<?php include('views/template/scriptBody.php');?>
 </body>
 </html>

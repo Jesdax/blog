@@ -90,12 +90,12 @@ class PostsManager extends Manager
     public function exists($id)
     {
         if (is_int($id)) {
-            return (bool) $this->db->query('SELECT COUNT(*) FROM posts WHERE id = ' . $id)->fetchColumn();
+            return $this->db->query('SELECT id FROM posts WHERE id = '.$id)->fetchColumn();
         } else {
-            $req = $this->db->prepare('SELECT COUNT(*) FROM posts WHERE title = :title');
+            $req = $this->db->prepare('SELECT title FROM posts WHERE title = :title');
             $req->execute([':title' => $id]);
 
-            return (bool) $req->fetchColumn();
+            return $req->fetchColumn();
         }
     }
 

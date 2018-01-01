@@ -50,6 +50,7 @@ function listPosts($currentPage)
          if (!isset($post)) {
              throw new Exception('Impossible de charger l\'article.');
          } else {
+
              $comments = $commentsManager->getComments($id);
 
              /* Require la vue front de postView */
