@@ -21,3 +21,10 @@ L'interface d'administration sera protégé par mot de passe.
 La rédaction de billets se fera dans une interface WYSIWYG basée sur TinyMCE pour que le client n'ait pas besoins de rédiger son histoire en HTML.
 
 Le développement se fera en PHP sans utiliser de framework pour vous familiariser avec les concepts de base de la programmation. Le code sera construit sur une architecture MVC (Model View Controller). Vous développerez autant que possible en orienté objet (au minimum, le modèle doit être construit sous forme d'objet).
+
+
+
+##### Utilisation :
+
+Utilisation du css bootstrap disponible <a href="https://getbootstrap.com/">ici</a> ainsi que du template 'Futur imperfect' sur le site <a href="https://html5up.net/">html5up</a>.
+
