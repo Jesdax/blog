@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Page de création de compte</title>
-        <meta charset="utf-8" />
-        <link href="public/css/bootstrap.css" rel="stylesheet">
-        <link href="public/css/style.css" rel="stylesheet">
-    </head>
-    <body>
-        <div>
+<?php $title = 'Page de création admin';
+include('views/template/header.php');
+;?>
+        <div id="main">
             <form class = "col-lg-4 col-lg-offset-4" action="index.php" method="post">
                 <div class = "form-group">
                     <label for="login">Votre pseudo admin</label>
@@ -21,5 +15,6 @@
             </form>
             <p><a class="btn btn-default" href="index.php">Revenir à l'accueil</a></p>
         </div>
+<?php include('views/template/scriptBody.php');?>
     </body>
 </html>
