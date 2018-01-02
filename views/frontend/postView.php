@@ -1,14 +1,6 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-    <title><?= $post->getTitle(); ?></title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-</head>
-<body class="single">
-
-<?php include('views/template/header.php'); ?>
+<?php
+$title = $post->getTitle();
+include('views/template/header.php'); ?>
 
 <div id="main">
     <article class="post">
