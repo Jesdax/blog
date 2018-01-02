@@ -268,4 +268,18 @@ function reported()
     require('views/backend/commentsReported.php');
 }
 
+/* Contact */
+
+function contact()
+{
+    require('views/frontend/contact.php');
+}
+
+function sendMail()
+{
+    $contact = new Mailer();
+    $contact->sendMail();
+}
+
+
 

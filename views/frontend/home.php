@@ -83,7 +83,7 @@ include('views/template/header.php'); ?>
                     <li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
                     <li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
                     <li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
-                    <li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
+                    <li><a href="index.php?frontend=contactForm" class="fa-envelope"><span class="label">Email</span></a></li>
                 </ul>
                 <p class="copyright">&copy; Copyright - 2017 Jean Forteroche - <a href="#">mentions légales</a>.</p>
             </section>

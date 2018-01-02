@@ -98,6 +98,11 @@ require('controllers/controller.php');
                     adminLog();
                     break;
 
+
+                case 'contactForm':
+                    contact();
+                    break;
+
                 default:
                     throw new Exception('La Page est inconnue');
                     break;
@@ -204,6 +209,9 @@ require('controllers/controller.php');
                     } else {
                         throw new Exception('Aucun commentaire n\'a été sélectionné.');
                     }
+                    break;
+                case 'sendMessage':
+                    sendMail();
                     break;
 
                 default:

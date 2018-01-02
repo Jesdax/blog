@@ -20,6 +20,7 @@
         <nav class="links">
             <ul>
                 <li><a href="index.php">Accueil</a></li>
+                <li><a href="index.php?frontend=contactForm">Contact</a></li>
             </ul>
         </nav>
         <nav class="main">
@@ -53,7 +54,7 @@
         <?php if(isset($_SESSION['administrateur'])) { ;?>
         <!-- Links -->
         <section>
-            <p style="text-align: center">Bienvenue Monsieur Fortercohe</p>
+            <p style="text-align: center">Bienvenue Monsieur Forteroche</p>
             <ul class="links">
                 <li>
                     <a href="index.php?backend=backOfficeView"><h3>Administration</h3></a>
@@ -63,9 +64,8 @@
         <?php } else { ;?>
         <section>
             <ul class="links">
-                <li>
-                    <a href="index.php"><h3>Accueil</h3></a>
-                <li><a href="#">Contact</a></li>
+                <li><a href="index.php"><h3>Accueil</h3></a></li>
+                <li><a href="index.php?frontend=contactForm">Contact</a></li>
             </ul>
         </section>
         <?php } ;?>
