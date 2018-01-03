@@ -16,13 +16,13 @@ include('views/template/header.php'); ?>
                         </div>
                         <div class="meta">
                             <time class="published" datetime="2017-12-01"><?= $post->getPostDate(); ?></time>
-                            <span class="author name">Jean Forteroche</span>
+                            <a class="author" href="#"><span class="name">Jean Forteroche</span><img src="public/images/polaricone.png" alt="auteur" /></a>
                         </div>
                     </header>
                     <p><?= substr($post->getContent(), 0, 300) . '...' ;?></p>
                     <footer>
                         <ul class="actions">
-                            <li><a href="index.php?frontend=post&amp;page=<?= $currentPage ?>&amp;id=<?= $post->getId() ?>" class="button big">Continuer de lire</a></li>
+                            <li><a href="index.php?frontend=post&amp;page=<?= $currentPage ?>&amp;id=<?= $post->getId() ?>" class="button big">Lire la suite</a></li>
                         </ul>
                     </footer>
                 </article>

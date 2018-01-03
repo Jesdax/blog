@@ -10,7 +10,7 @@ include('views/template/header.php'); ?>
             </div>
             <div class="meta">
                 <time class="published" datetime="2017-12-01"><?= $post->getPostDate() ?></time>
-                <span class="author name">Jean Forteroche</span>
+                <a class="author" href="#"><span class="name">Jean Forteroche</span><img src="public/images/polaricone.png" alt="auteur" /></a>
             </div>
         </header>
 

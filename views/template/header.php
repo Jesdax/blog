@@ -48,7 +48,7 @@
             <form class="search" method="post" action="index.php">
                 <input type="text" name="postSearch" placeholder="Rechercher un article" />
                 <input type="hidden" name="page" value="<?= $currentPage; ?>">
-                <input type="submit" name="search" class="button big fit" />
+                <input type="submit" name="search" class="button big fit" value="GO !"/>
             </form>
         </section>
 
@@ -59,6 +59,8 @@
             <ul class="links">
                 <li>
                     <a href="index.php?backend=backOfficeView"><h3>Administration</h3></a>
+                    <a href="index.php?backend=listPosts"><h3>Articles</h3></a>
+                    <a href="index.php?backend=reported"><h3>Commentaires signalés</h3></a>
                 </li>
             </ul>
         </section>

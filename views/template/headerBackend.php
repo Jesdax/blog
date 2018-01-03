@@ -54,6 +54,8 @@
                 <ul class="links">
                     <li>
                         <a href="index.php"><h3>Accueil</h3></a>
+                        <a href="index.php?backend=listPosts"><h3>Articles</h3></a>
+                        <a href="index.php?backend=reported"><h3>Commentaires signalés</h3></a>
                     </li>
                 </ul>
             </section>
