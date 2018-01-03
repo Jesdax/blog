@@ -93,7 +93,7 @@ if(!isset($_SESSION['administrateur'])) {
                                     </div>
                                     <div class="col-lg-9 text-right">
                                         <h1><?= $commentsManager->count(); ?></h1>
-                                        <div>Nombre de commentaires totalisant le blog</div>
+                                        <div>Nombre de commentaires totalisant dans le blog</div>
                                     </div>
                                 </div>
                             </div>

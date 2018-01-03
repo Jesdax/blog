@@ -7,8 +7,10 @@ if(!isset($_SESSION['administrateur'])) {
 ;?>
 
 
-                <div class="container">
-                    <div><p>Articles</p></div>
+                <div class="container" style="width: auto;">
+                    <div class="row">
+                        <h1>Articles</h1>
+                    </div>
                     <div class="row">
 
                         <?php foreach($posts as $post) { ;?>
@@ -22,13 +24,13 @@ if(!isset($_SESSION['administrateur'])) {
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-lg-4">
-                                                <a href="index.php?frontend=post&amp;id=<?= $post->getId(); ?>"><i class="fa fa-eye"></i></a>
+                                                <abbr title="Voir"><a href="index.php?frontend=post&amp;id=<?= $post->getId(); ?>"><i class="fa fa-eye"></i></a></abbr>
                                             </div>
                                             <div class="col-lg-4">
-                                                <a href="index.php?backend=editPost&amp;id=<?=$post->getId(); ?>"><i class="fa fa-pencil"></i></a>
+                                                <abbr title="Modifier"><a href="index.php?backend=editPost&amp;id=<?=$post->getId(); ?>"><i class="fa fa-pencil"></i></a></abbr>
                                             </div>
                                             <div class="col-lg-4">
-                                                <a href="index.php?action=deletePost&amp;id=<?= $post->getId(); ?>"><i class="fa fa-trash"></i></a>
+                                                <abbr title="Supprimer"><a href="index.php?action=deletePost&amp;id=<?= $post->getId(); ?>"><i class="fa fa-trash"></i></a></abbr>
                                             </div>
                                         </div>
                                     </div>
@@ -44,7 +46,7 @@ if(!isset($_SESSION['administrateur'])) {
                     <a href="index.php?backend=backOfficeView" class="button">Retour</a>
                 </div>
 
-<?php include('views/template/scriptBody.php') ;?>
+            <?php include('views/template/scriptBody.php') ;?>
 
         </body>
     </html>

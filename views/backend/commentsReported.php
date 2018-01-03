@@ -8,7 +8,7 @@ if(!isset($_SESSION['administrateur'])) {
 
             <div id="main">
                 <section class="post">
-
+                    <h1 style="text-align: center">Commentaires signalés</h1><br />
                     <?php foreach($comments as $comment) { ;?>
 
                         <table>
@@ -28,8 +28,8 @@ if(!isset($_SESSION['administrateur'])) {
                                     <td><?= nl2br($comment->getContent()); ?></td>
                                     <td><?= $comment->getCommentDate(); ?></td>
                                     <td><?= $comment->getReported(); ?></td>
-                                    <td><a href="index.php?action=auth&amp;id=<?=$comment->getId(); ?>">Valider</a></td>
-                                    <td><a href="index.php?action=deleteComment&amp;id=<?=$comment->getId(); ?>">Supprimer</a></td>
+                                    <td><a class="btn btn-success" href="index.php?action=auth&amp;id=<?=$comment->getId(); ?>">Valider</a></td>
+                                    <td><a class="btn btn-danger" href="index.php?action=deleteComment&amp;id=<?=$comment->getId(); ?>">Supprimer</a></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -41,9 +41,7 @@ if(!isset($_SESSION['administrateur'])) {
 
                 </section>
                 <section>
-                    <p>
-                        <a href="index.php?backend=backOfficeView">Retour</a>
-                    </p>
+                        <a href="index.php?backend=backOfficeView" class="button">Retour</a>
                 </section>
             </div>
 

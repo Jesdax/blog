@@ -27,7 +27,7 @@ function listPosts($currentPage)
     $nbrPage = ceil($totalPosts / $postPerPage);
 
     if ($currentPage > $nbrPage) {
-        throw new Exception('La page demandé n\existe pas.');
+        throw new Exception('La page demandé n\'existe pas.');
     } else {
         $start = ($currentPage - 1) * $postPerPage;
 

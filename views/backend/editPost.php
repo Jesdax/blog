@@ -39,13 +39,13 @@ if(!isset($_SESSION['administrateur'])) {
                 <?php } else { ;?>
 
                     <form class="col-lg-10 col-lg-offset-1" action="index.php" method="post">
-                        <legend>Ajout d'un nouvel article</legend>
+                        <h1 style="text-align: center">Ajout d'un nouvel article</h1><br />
                         <div class="form-group">
-                            <label for="title">Titre</label><br />
+                            <label for="title">Titre</label>
                             <input class="form-control" id="title" type="text" name="title"/>
-                        </div>
+                        </div><br />
                         <div class="form-group">
-                            <label for="content">Contenu</label><br />
+                            <label for="content">Contenu</label>
                             <textarea class="form-control" id="content" name="content"></textarea>
                         </div><br />
                         <input class="pull-right" type="submit" name="publish" value="Publier l'article" />
