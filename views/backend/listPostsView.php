@@ -8,27 +8,27 @@ if(!isset($_SESSION['administrateur'])) {
 
 
                 <div class="container">
-                    <div>Articles</div>
+                    <div><p>Articles</p></div>
                     <div class="row">
 
                         <?php foreach($posts as $post) { ;?>
 
                             <div class="col-lg-3 text-center">
-                                <div class="panel panel-default">
+                                <div class="panel panel-primary">
                                     <div class="panel-heading">
                                         <?= $post->getTitle(); ?>
                                     </div>
 
                                     <div class="panel-body">
                                         <div class="row">
-                                            <div class="col-lg-3">
-                                                <a href="index.php?frontend=post&amp;id=<?= $post->getId(); ?>">Voir</a>
+                                            <div class="col-lg-4">
+                                                <a href="index.php?frontend=post&amp;id=<?= $post->getId(); ?>"><i class="fa fa-eye"></i></a>
                                             </div>
                                             <div class="col-lg-4">
-                                                <a href="index.php?backend=editPost&amp;id=<?=$post->getId(); ?>">Modifier</a>
+                                                <a href="index.php?backend=editPost&amp;id=<?=$post->getId(); ?>"><i class="fa fa-pencil"></i></a>
                                             </div>
                                             <div class="col-lg-4">
-                                                <a data-toggle="modal" href="index.php?action=deletePost&amp;id=<?= $post->getId(); ?>" id="delete">Supprimer</a>
+                                                <a href="index.php?action=deletePost&amp;id=<?= $post->getId(); ?>"><i class="fa fa-trash"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -40,33 +40,10 @@ if(!isset($_SESSION['administrateur'])) {
 
                             <?php } ;?>
 
-                        <div class="modal fade" id="confirm">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">Confirmation</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        Êtes-vous sur de vouloir supprimer <?= $post->getId(); ?> ?
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button class="btn btn-default" data-dismiss="modal">Non</button>
-                                        <a class="btn btn-primary">Oui</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                    <p><a href="index.php?backend=backOfficeView" class="btn btn-default">Retour</a></p>
+                    <a href="index.php?backend=backOfficeView" class="button">Retour</a>
                 </div>
-    <script src = "public/js/jquery.js"></script>
-    <script src = "public/js/bootstrap.js"></script>
-    <script>
-        $('#delete').click(function(){
-            $('#confirm').modal('show');
-        });
-    </script>
+
 <?php include('views/template/scriptBody.php') ;?>
 
         </body>

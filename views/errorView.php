@@ -1,4 +1,3 @@
-<?php include('views/template/header.php'); ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,7 +7,6 @@
         <link rel="stylesheet" href="assets/css/main.css" />
         <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
         <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-
         <title>Page d'erreur</title>
     </head>
     <body>
@@ -17,11 +15,11 @@
             <?php if(isset($errorMessage)) { ;?>
 
                 <div class="alert col-lg-4 col-lg-offset-4 alert-danger text-center">
-                    <?= $errorMessage; ?>
+                    <p><?= $errorMessage; ?></p>
                 </div>
                 <?php } else { ;?>
                 <div class="alert col-lg-4 col-lg-offset-4 alert-info text-center">
-                    Aucune erreur à afficher.
+                    <p>Aucune erreur à afficher.</p>
                 </div>
                 <?php } ;?>
         </div>

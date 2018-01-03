@@ -89,6 +89,11 @@ require('controllers/controller.php');
                         } else {
                             throw new Exception('Cet article n\'existe pas.');
                         }
+                    } elseif (isset($_GET['id'])) {
+                        $_GET['id'] = (int) $_GET['id'];
+                        if ($_GET['id'] > 0) {
+                            post($_GET['id'],'');
+                        }
                     } else {
                         throw new Exception('Aucun article n\'a été sélectionné.');
                     }

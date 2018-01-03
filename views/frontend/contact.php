@@ -7,15 +7,15 @@ include('views/template/header.php');
                 <div class = "form-group">
                     <label for="name">Nom / Prénom :</label>
                     <input class="form-control" type="text" name="name" id="name" required autofocus/>
-                </div>
+                </div><br/>
                 <div class="form-control">
                     <label for="mail">Email :</label>
                     <input class="form-control" type="text" name="mail" id="mail" required autofocus/>
-                </div>
+                </div><br/>
                 <div class="form-group">
                     <label for="objet">Objet :</label>
                     <input class="form-control" type="text" name="objet" id="objet" />
-                </div>
+                </div><br/>
                 <div class="form-control">
                     <label for="message">Votre message :</label>
                     <textarea name="message" id="message"></textarea>
@@ -23,7 +23,7 @@ include('views/template/header.php');
                 <br />
                 <input type="submit" value="Envoyez" name="sendMessage" id="sendMessage"/>
             </form>
-            <p><a class="btn btn-default" href="index.php">Revenir à l'accueil</a></p>
+            <a class="button" href="index.php"><i class="fa fa-arrow-left"> Revenir à l'accueil</i></a>
         </div>
     <?php include('views/template/scriptBody.php'); ?>
     </body>

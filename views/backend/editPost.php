@@ -23,16 +23,16 @@ if(!isset($_SESSION['administrateur'])) {
             <section class="">
                 <?php if(isset($post)) { ;?>
                     <form class="col-lg-10 col-lg-offset-1" action="index.php" method="post">
-                        <legend>Modifier un article</legend>
+                        <legend>Modifier un article</legend><br />
                         <div class="form-group">
                             <input type="hidden" name="id" value="<?= $post->getId(); ?>" />
-                            <label for="title">Titre</label><br />
+                            <label for="title">Titre</label>
                             <input class="form-control" type="text" name="title" id="title" value="<?= $post->getTitle(); ?>"/>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group"><br />
                             <label for="content">Contenu</label><br />
                             <textarea class="form-control" id="content" name="content"><?= $post->getContent() ?></textarea>
-                        </div>
+                        </div><br />
                         <input class="pull-right" type="submit" name="update" value="Mettre à jour" />
                     </form>
 
@@ -48,7 +48,7 @@ if(!isset($_SESSION['administrateur'])) {
                             <label for="content">Contenu</label><br />
                             <textarea class="form-control" id="content" name="content"></textarea>
                         </div><br />
-                        <input class="pull-right" type="submit" name="publy" value="Publier l'article" />
+                        <input class="pull-right" type="submit" name="publish" value="Publier l'article" />
                     </form>
 
 
@@ -56,10 +56,9 @@ if(!isset($_SESSION['administrateur'])) {
 
             </section>
 
-            <p class="row">
-                <a href="index.php?backend=backOfficeView">Retour</a>
-
-            </p>
+            <div class="row">
+                <a class="button" href="index.php?backend=backOfficeView">Retour</a>
+            </div>
         </div>
 
             <?php include('views/template/scriptBody.php');?>

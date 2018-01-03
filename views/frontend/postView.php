@@ -26,22 +26,23 @@ include('views/template/header.php'); ?>
             <input type="text" name="author" id="author"/>
             <label for="comment">Commentaire</label>
         </fieldset>
-        <textarea name="comment" id="comment"></textarea>
+        <textarea name="comment" id="comment"></textarea><br />
         <input class="btn btn-default pull-right" type="submit" value="Poster un commentaire" />
-    </form>
+    </form><br />
+    <?php
+    foreach($comments as $comment) { ?>
+        <div class="post" style="background-color: #d9d9d9">
+            <h4><?= $comment->getAuthor(); ?><br /><em> le <?= $comment->getCommentDate(); ?></em></h4>
+            <div>
+                <?= nl2br(htmlspecialchars($comment->getContent())); ?>
+            </div>
+            <a class="btn btn-default" href="index.php?action=report&amp;idComment=<?= $comment->getId()?>&amp;idPost=<?=$post->getId()?>&amp;page=<?= $currentPage; ?>">Signaler</a>
+        </div>
+    <?php } ;?>
+    <?php include('views/template/scriptBody.php');?>
 </div>
 
 
-<?php
-foreach($comments as $comment) { ?>
-    <div class="container">
-        <h4><?= $comment->getAuthor(); ?><br /><em> le <?= $comment->getCommentDate(); ?></em></h4>
-        <div>
-            <?= nl2br(htmlspecialchars($comment->getContent())); ?>
-        </div>
-        <a class="btn btn-default" href="index.php?action=report&amp;idComment=<?= $comment->getId()?>&amp;idPost=<?=$post->getId()?>&amp;page=<?= $currentPage; ?>">Signaler</a>
-    </div>
-    <?php } ;?>
-<?php include('views/template/scriptBody.php');?>
+
 </body>
 </html>

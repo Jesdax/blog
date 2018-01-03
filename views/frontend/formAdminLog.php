@@ -6,14 +6,14 @@ include('views/template/header.php');
                 <div class = "form-group">
                     <label for="login">Votre pseudo admin</label>
                     <input class="form-control" type="text" name="login" id="login" required autofocus/>
-                </div>
+                </div><br />
                 <div class="form-group">
                     <label for="pass">Mot de passe</label>
                     <input class="form-control" type="password" name="pass" id="pass" required autofocus/>
-                </div>
+                </div><br />
                 <input type="submit" value="Créer un compte admin" name="create" />
             </form>
-            <p><a class="btn btn-default" href="index.php">Revenir à l'accueil</a></p>
+            <a class="button" href="index.php"><i class="fa fa-arrow-left"> Revenir à l'accueil</i></a>
         </div>
 <?php include('views/template/scriptBody.php');?>
     </body>

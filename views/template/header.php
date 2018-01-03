@@ -65,7 +65,7 @@
         <section>
             <ul class="links">
                 <li><a href="index.php"><h3>Accueil</h3></a></li>
-                <li><a href="index.php?frontend=contactForm">Contact</a></li>
+                <li><a href="index.php?frontend=contactForm"><h3>Contact</h3></a></li>
             </ul>
         </section>
         <?php } ;?>

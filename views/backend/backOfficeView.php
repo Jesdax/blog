@@ -6,13 +6,13 @@ if(!isset($_SESSION['administrateur'])) {
 } else {
 ;?>
 
-        <div class="main">
-            <section class="post">
+        <div id="wrapper" style="width: auto">
+            <section class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <legend>Tableau de bord</legend>
+                        <h1 style="text-align: center">Tableau de bord</h1>
                     </div>
-                </div>
+                </div><br/>
                 <div class="row">
 
                     <div class="col-lg-3">
@@ -61,35 +61,11 @@ if(!isset($_SESSION['administrateur'])) {
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div class="panel panel-success">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-lg-3">
-                                        <i class="fa fa-comments fa-5x"></i>
-                                    </div>
-                                    <div class="col-lg-9 text-right">
-                                        <h1><?= $commentsManager->count(); ?></h1>
-                                        <div>Commentaires</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">Voir détails</span>
-                                    <span class="pull-right">
-                                        <i class="fa fa-arrow-circle-right"></i>
-                                    </span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
                         <div class="panel panel-danger">
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-lg-3">
-                                        <i class="fa fa-flag fa-5x"></i>
+                                        <i class="fa fa-warning fa-5x"></i>
                                     </div>
                                     <div class="col-lg-9 text-right">
                                         <h1><?= $commentsManager->countReported(); ?></h1>
@@ -106,6 +82,21 @@ if(!isset($_SESSION['administrateur'])) {
                                     <div class="clearfix"></div>
                                 </div>
                             </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <i class="fa fa-comments fa-5x"></i>
+                                    </div>
+                                    <div class="col-lg-9 text-right">
+                                        <h1><?= $commentsManager->count(); ?></h1>
+                                        <div>Nombre de commentaires totalisant le blog</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

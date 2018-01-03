@@ -9,14 +9,14 @@ include('views/template/header.php');
                     <div class="form-group">
                         <label for="login">Identifiant</label>
                         <input class="form-control" type="text" name="login" id="login" />
-                    </div>
+                    </div><br />
                     <div class="form-group">
                         <label for="pass">Mot de passe</label>
                         <input class="form-control" type="password" name="pass" id="pass"/>
-                    </div>
+                    </div><br />
                     <input type="submit" value="Se connecter" name="connexion" id="connexion" />
                 </form>
-                <a href="index.php" class="btn btn-default">Revenir à l'acceuil</a>
+            <a class="button" href="index.php"><i class="fa fa-arrow-left"> Revenir à l'accueil</i></a>
         </article>
     </div>
 
