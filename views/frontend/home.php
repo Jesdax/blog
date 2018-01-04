@@ -55,6 +55,7 @@ include('views/template/header.php'); ?>
 
         </div>
 
+
         <!-- Sidebar -->
         <section id="sidebar">
 
@@ -89,6 +90,8 @@ include('views/template/header.php'); ?>
             </section>
 
         </section>
+
 <?php include('views/template/scriptBody.php');?>
+
 </body>
 </html>

@@ -23,7 +23,7 @@ function listPosts($currentPage)
 {
     $postsManager = new PostsManager();
     $totalPosts = $postsManager->count();
-    $postPerPage = 2;
+    $postPerPage = 1;
     $nbrPage = ceil($totalPosts / $postPerPage);
 
     if ($currentPage > $nbrPage) {

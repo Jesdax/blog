@@ -6,7 +6,7 @@ if(!isset($_SESSION['administrateur'])) {
 } else {
 ;?>
 
-        <div id="wrapper" style="width: auto">
+        <div id="main" style="width: auto">
             <section class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -93,20 +93,16 @@ if(!isset($_SESSION['administrateur'])) {
                                     </div>
                                     <div class="col-lg-9 text-right">
                                         <h1><?= $commentsManager->count(); ?></h1>
-                                        <div>Nombre de commentaires totalisant dans le blog</div>
+                                        <div>Nombre de commentaires totaux dans le blog</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-6 col-lg-offset-3">
-                        <hr/>
-                    </div>
-                </div>
             </section>
     </div>
+
     <?php include('views/template/scriptBody.php');?>
     </body>
 </html>

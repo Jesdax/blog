@@ -10,20 +10,43 @@
     <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
     <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
     <link rel="stylesheet" href="public/css/style.css"/>
+    <link rel="stylesheet" href="public/css/snow.css"/>
 </head>
 <body>
+
+
 <!-- Wrapper -->
 <div id="wrapper">
 
     <!-- Header -->
     <header id="header">
-        <h1><a href="#">Billet simple pour l'Alaska</a></h1>
-        <nav class="links">
-            <ul>
-                <li><a href="index.php">Accueil</a></li>
-                <li><a href="index.php?frontend=contactForm">Contact</a></li>
-            </ul>
-        </nav>
+        <div class="snow">
+            <div class="snow__layer">
+                <div class="snow__fall">
+                </div>
+            </div>
+            <div class="snow__layer">
+                <div class="snow__fall">
+                </div>
+            </div>
+            <div class="snow__layer">
+                <div class="snow__fall">
+
+                </div>
+                <div class="snow__fall">
+
+                </div>
+                <div class="snow__fall">
+
+                </div>
+            </div>
+            <div class="snow__layer">
+                <div class="snow__fall">
+
+                </div>
+            </div>
+        </div>
+        <h1 style="color: #fff"><a href="#">Voyage au bout du monde arctique</a></h1>
         <nav class="main">
             <ul>
                 <li class="search">
@@ -55,7 +78,7 @@
         <?php if(isset($_SESSION['administrateur'])) { ;?>
         <!-- Links -->
         <section>
-            <p style="text-align: center">Bienvenue Monsieur Forteroche</p>
+            <p style="text-align: center"><i class="fa fa-user"></i> Bienvenue Monsieur Forteroche</p>
             <ul class="links">
                 <li>
                     <a href="index.php?backend=backOfficeView"><h3>Administration</h3></a>
@@ -85,4 +108,3 @@
         </section>
 
     </section>
-

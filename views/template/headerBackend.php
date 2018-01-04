@@ -11,6 +11,7 @@
         <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
         <link href="public/css/panel.css" rel="stylesheet">
         <link href="public/css/style.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="public/css/snow.css"/>
         <?= $scriptTinyMCE ; ?><br />
         <?= $scriptTinyMCE2 ; ?>
 
@@ -22,12 +23,33 @@
 
         <!-- Header -->
         <header id="header">
-            <h1><a href="#">Billet simple pour l'Alaska</a></h1>
-            <nav class="links">
-                <ul>
-                    <li><a href="index.php">Accueil</a></li>
-                </ul>
-            </nav>
+            <div class="snow">
+                <div class="snow__layer">
+                    <div class="snow__fall">
+                    </div>
+                </div>
+                <div class="snow__layer">
+                    <div class="snow__fall">
+                    </div>
+                </div>
+                <div class="snow__layer">
+                    <div class="snow__fall">
+
+                    </div>
+                    <div class="snow__fall">
+
+                    </div>
+                    <div class="snow__fall">
+
+                    </div>
+                </div>
+                <div class="snow__layer">
+                    <div class="snow__fall">
+
+                    </div>
+                </div>
+            </div>
+            <h1 style="color: #fff"><a href="#">Voyage au bout du monde arctique</a></h1>
             <nav class="main">
                 <ul>
                     <li class="menu">
@@ -51,6 +73,7 @@
 
             <!-- Links -->
             <section>
+                <p style="text-align: center"><i class="fa fa-user"></i> Bienvenue Monsieur Forteroche</p>
                 <ul class="links">
                     <li>
                         <a href="index.php"><h3>Accueil</h3></a>

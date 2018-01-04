@@ -28,8 +28,8 @@ if(!isset($_SESSION['administrateur'])) {
                                     <td><?= nl2br($comment->getContent()); ?></td>
                                     <td><?= $comment->getCommentDate(); ?></td>
                                     <td><?= $comment->getReported(); ?></td>
-                                    <td><a class="btn btn-success" href="index.php?action=auth&amp;id=<?=$comment->getId(); ?>">Valider</a></td>
-                                    <td><a class="btn btn-danger" href="index.php?action=deleteComment&amp;id=<?=$comment->getId(); ?>">Supprimer</a></td>
+                                    <td><a style="margin-left: 15px;" class="btn btn-success" href="index.php?action=auth&amp;id=<?=$comment->getId(); ?>"><i class="fa fa-check"></i></a></td>
+                                    <td><a style="margin-left: 19px;" class="btn btn-danger" href="index.php?action=deleteComment&amp;id=<?=$comment->getId(); ?>"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                             </tbody>
                         </table>

@@ -7,7 +7,7 @@ if(!isset($_SESSION['administrateur'])) {
 ;?>
 
 
-                <div class="container" style="width: auto;">
+                <div id="main" style="width: auto;">
                     <div class="row">
                         <h1>Articles</h1>
                     </div>

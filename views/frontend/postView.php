@@ -39,10 +39,9 @@ include('views/template/header.php'); ?>
             <a class="btn btn-default" href="index.php?action=report&amp;idComment=<?= $comment->getId()?>&amp;idPost=<?=$post->getId()?>&amp;page=<?= $currentPage; ?>">Signaler</a>
         </div>
     <?php } ;?>
-    <?php include('views/template/scriptBody.php');?>
 </div>
-
-
+</div>
+    <?php include('views/template/scriptBody.php');?>
 
 </body>
 </html>

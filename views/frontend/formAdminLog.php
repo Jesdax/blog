@@ -15,6 +15,7 @@ include('views/template/header.php');
             </form>
             <a class="button" href="index.php"><i class="fa fa-arrow-left"> Revenir à l'accueil</i></a>
         </div>
+</div>
 <?php include('views/template/scriptBody.php');?>
     </body>
 </html>
