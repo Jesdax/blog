@@ -61,12 +61,17 @@ include('views/template/header.php'); ?>
 
             <!-- Intro -->
             <section id="intro">
-                <a href="#" class="logo"><img src="public/images/logoForteroche.png" alt="logo JF" /></a>
+                <a href="" class="logo"><img src="public/images/logoForteroche.png" alt="logo JF" /></a>
                 <header>
                     <h2>Billet simple pour l'Alaska</h2>
                     <p>Jean Forteroche </p>
                 </header>
             </section>
+
+            <!-- Mini Post Carousel-->
+            <div>
+                <div><a href="public/images/aurore_boreal.jpg"><img class="imgHome" alt="Aurore boreal" src="public/images/aurore_boreal_mini.jpg" title="Cliquez pour agrandir"/></a></div>
+            </div>
 
             <!-- About -->
             <section class="blurb">
@@ -76,6 +81,8 @@ include('views/template/header.php'); ?>
                     <li><a href="#" class="button">En savoir plus</a></li>
                 </ul>
             </section>
+
+
 
             <!-- Footer -->
             <section id="footer">

@@ -9,7 +9,7 @@ if(!isset($_SESSION['administrateur'])) {
 
                 <div id="main" style="width: auto;">
                     <div class="row">
-                        <h1>Articles</h1>
+                        <h1>Liste d'articles</h1>
                     </div>
                     <div class="row">
 
