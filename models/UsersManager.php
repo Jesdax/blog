@@ -14,8 +14,8 @@ class UsersManager extends Manager
     public function add(Users $admin)
     {
         $req = $this->db->prepare('INSERT INTO user (login, password) VALUES (:login, :pass)');
-        $req->bindValue(':login', );
-        $req->bindValue(':pass', password_hash($admin, PASSWORD_DEFAULT));
+        $req->bindValue(':login', $admin->getLogin());
+        $req->bindValue(':pass', password_hash($admin->getPassword(), PASSWORD_DEFAULT));
         $req->execute();
     }
 

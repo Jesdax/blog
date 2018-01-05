@@ -119,14 +119,27 @@ function connexion($login, $password)
 
 function createAdmin()
 {
-    $login = 'login';
-    $password = 'pass';
+    if ($_POST) {
+        $login = $_POST['login'];
+        $password = $_POST['pass'];
 
-    $admin = [$login, $password];
-    $usersManager = new UsersManager();
-    $usersManager->add($admin);
+        $array = [$login, $password];
+        $user = new Users($array);
+        $usersManager = new UsersManager();
+        $result = $usersManager->add($user);
 
-    header('Location: index.php');
+        if ($result) {
+            echo 'Compte admin créer';
+            header('Location: index.php');
+        } else {
+            throw new Exception('Echec de la création de compte admin');
+        }
+
+    } else {
+        throw new Exception('Méthode ou paramètre invalide');
+    }
+
+
 }
 
 

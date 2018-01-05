@@ -15,6 +15,7 @@ include('views/template/header.php')
                 </div>
                 <?php } ;?>
         </div>
+<?php include('views/template/scriptBody.php');?>
     </body>
 </html>
 

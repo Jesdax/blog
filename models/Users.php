@@ -4,9 +4,9 @@
 
 class Users
 {
-    private $id;
-    private $login;
-    private $password;
+    public $id;
+    public $login;
+    public $password;
 
     public function __construct($data)
     {
