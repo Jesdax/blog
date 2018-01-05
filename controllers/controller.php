@@ -11,14 +11,6 @@ spl_autoload_register('loadClass');
 
 ## Fonctions généraux ##
 
-function createAdmin($login, $password)
-{
-    $user = new UsersManager();
-    $user->add($login, $password);
-
-    header('Location: index.php');
-}
-
 function listPosts($currentPage)
 {
     $postsManager = new PostsManager();
@@ -122,6 +114,19 @@ function connexion($login, $password)
             header('Location: index?backend=backOfficeView');
         }
     }
+}
+
+
+function createAdmin()
+{
+    $login = 'login';
+    $password = 'pass';
+
+    $admin = [$login, $password];
+    $usersManager = new UsersManager();
+    $usersManager->add($admin);
+
+    header('Location: index.php');
 }
 
 

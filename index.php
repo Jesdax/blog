@@ -20,7 +20,7 @@ require('controllers/controller.php');
             if (!empty($_POST['login']) && !empty($_POST['pass'])) {
                 $_POST['login'] = htmlspecialchars($_POST['login']);
                 $_POST['pass'] = htmlspecialchars($_POST['pass']);
-                createAdmin($_POST['login'], $_POST['pass']);
+                createAdmin();
             } else {
                 throw new Exception('Une erreur a été détecter dans la saisie des champs.');
             }

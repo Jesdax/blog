@@ -11,11 +11,11 @@ class UsersManager extends Manager
         $this->db = $this->dbConnect();
     }
 
-    public function add($login, $password)
+    public function add(Users $admin)
     {
         $req = $this->db->prepare('INSERT INTO user (login, password) VALUES (:login, :pass)');
-        $req->bindValue(':login', $login);
-        $req->bindValue(':pass', password_hash($password, PASSWORD_DEFAULT));
+        $req->bindValue(':login', );
+        $req->bindValue(':pass', password_hash($admin, PASSWORD_DEFAULT));
         $req->execute();
     }
 
