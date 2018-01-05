@@ -2,7 +2,7 @@
 
 
 
-class Comments extends Hydrating
+class Comment extends Hydrating
 {
     private $id;
     private $postId;

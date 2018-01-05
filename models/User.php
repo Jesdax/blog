@@ -2,7 +2,7 @@
 
 
 
-class Users
+class User
 {
     public $id;
     public $login;

@@ -13,9 +13,9 @@ spl_autoload_register('loadClass');
 
 function listPosts($currentPage)
 {
-    $postsManager = new PostsManager();
+    $postsManager = new PostManager();
     $totalPosts = $postsManager->count();
-    $postPerPage = 4;
+    $postPerPage = 2;
     $nbrPage = ceil($totalPosts / $postPerPage);
 
     if ($currentPage > $nbrPage) {
@@ -32,8 +32,8 @@ function listPosts($currentPage)
 
  function post($id, $currentPage)
  {
-     $postsManager = new PostsManager();
-     $commentsManager = new CommentsManager();
+     $postsManager = new PostManager();
+     $commentsManager = new CommentManager();
 
      if (!$postsManager->exists($id)) {
          throw new Exception('Cet article n\'existe pas.');
@@ -53,8 +53,8 @@ function listPosts($currentPage)
 
  function postComment($postId, $author, $comment, $page)
  {
-     $commentsManager = new CommentsManager();
-     $postsManager = new PostsManager();
+     $commentsManager = new CommentManager();
+     $postsManager = new PostManager();
 
      if (!$postsManager->exists($postId)) {
          throw new Exception('Cet article n\'existe pas.');
@@ -70,8 +70,8 @@ function listPosts($currentPage)
 
  function reportComment($id, $postId, $page)
  {
-     $commentsManager = new CommentsManager();
-     $postsManager = new PostsManager();
+     $commentsManager = new CommentManager();
+     $postsManager = new PostManager();
 
      if (!$commentsManager->exists($id)) {
          throw new Exception('Ce commentaire n\'existe pas.');
@@ -100,7 +100,7 @@ function listPosts($currentPage)
 
 function connexion($login, $password)
 {
-    $usersManager = new UsersManager();
+    $usersManager = new UserManager();
 
     if (!$usersManager->exists($login)) {
         throw new Exception('Identifiant incorrect.');
@@ -123,10 +123,10 @@ function createAdmin()
         $login = $_POST['login'];
         $password = $_POST['pass'];
 
-        $array = [$login, $password];
-        $user = new Users($array);
-        $usersManager = new UsersManager();
-        $result = $usersManager->add($user);
+        $array = ['login' => $login, 'password' => $password];
+        $admin = new User($array);
+        $usersManager = new UserManager();
+        $result = $usersManager->add($admin);
 
         if ($result) {
             echo 'Compte admin créer';
@@ -138,7 +138,6 @@ function createAdmin()
     } else {
         throw new Exception('Méthode ou paramètre invalide');
     }
-
 
 }
 
@@ -164,7 +163,7 @@ function logout()
 
 function addPost($title, $content)
 {
-    $postsManager = new PostsManager();
+    $postsManager = new PostManager();
     $affectedLines = $postsManager->addPost($title, $content);
 
     if ($affectedLines === false) {
@@ -176,7 +175,7 @@ function addPost($title, $content)
 
 function editPost($id)
 {
-    $postsManager = new PostsManager();
+    $postsManager = new PostManager();
 
     if (!$postsManager->exists($id)) {
         throw new Exception('Cet article n\'existe pas.');
@@ -190,7 +189,7 @@ function editPost($id)
 
 function updatePost($id, $title, $content)
 {
-    $postsManager = new PostsManager();
+    $postsManager = new PostManager();
 
     if (!$postsManager->exists($id)) {
         throw new Exception('Cet article n\'existe pas.');
@@ -206,12 +205,12 @@ function updatePost($id, $title, $content)
 
 function deletePost($postId)
 {
-    $postsManager = new PostsManager();
+    $postsManager = new PostManager();
 
     if (!$postsManager->exists($postId)) {
         throw new Exception('Cet article est perdu dans les lambes d\'internet ou n\'existe pas.');
     } else {
-        $commentsManager = new CommentsManager();
+        $commentsManager = new CommentManager();
         $commentsManager->deletePostComments($postId);
         $affectedLines = $postsManager->delete($postId);
         if ($affectedLines == 0) {
@@ -224,7 +223,7 @@ function deletePost($postId)
 
 function deleteComment($id)
 {
-    $commentsManager = new CommentsManager();
+    $commentsManager = new CommentManager();
 
     if (!$commentsManager->exists($id)) {
         throw new Exception('Ce commentaire n\'existe pas.');
@@ -240,7 +239,7 @@ function deleteComment($id)
 
 function auth($id)
 {
-    $commentsManager = new CommentsManager();
+    $commentsManager = new CommentManager();
 
     if(!$commentsManager->exists($id)) {
         throw new Exception('Ce commentaire n\'existe pas.');
@@ -259,7 +258,7 @@ function auth($id)
 
 function backendListPosts()
 {
-    $postsManager = new PostsManager();
+    $postsManager = new PostManager();
 
     $posts = $postsManager->getPosts();
 
@@ -269,8 +268,8 @@ function backendListPosts()
 
 function backOffice()
 {
-    $commentsManager = new CommentsManager();
-    $postsManager = new PostsManager();
+    $commentsManager = new CommentManager();
+    $postsManager = new PostManager();
 
     /* require la vue backend du backoffice */
     require('views/backend/backOfficeView.php');
@@ -278,7 +277,7 @@ function backOffice()
 
 function reported()
 {
-    $commentsManager = new CommentsManager();
+    $commentsManager = new CommentManager();
 
     $comments = $commentsManager->getReported();
 

@@ -1,7 +1,7 @@
 <?php
 
 
-class CommentsManager extends Manager
+class CommentManager extends Manager
 {
     private $db;
 
@@ -29,7 +29,7 @@ class CommentsManager extends Manager
         $req->execute([':postId' => $postId]);
 
         while ($data = $req->fetch(\PDO::FETCH_ASSOC)) {
-            $comments[] = new Comments($data);
+            $comments[] = new Comment($data);
         }
         return $comments;
     }
@@ -39,7 +39,7 @@ class CommentsManager extends Manager
         $req = $this->db->prepare('SELECT id, author, content, reported, DATE_FORMAT(comment_date, \'%d.%m.%Y à %Hh%imin\') AS commentDate FROM comments WHERE id = :id');
         $req->execute([':id' => $id]);
 
-        return new Comments($req->fetch(\PDO::FETCH_ASSOC));
+        return new Comment($req->fetch(\PDO::FETCH_ASSOC));
     }
 
     public function report($id)
@@ -56,7 +56,7 @@ class CommentsManager extends Manager
         $req = $this->db->query('SELECT id, author, content, reported, DATE_FORMAT(comment_date, \'%d.%m.%Y à %Hh%imin\') AS commentDate FROM comments WHERE reported > 0 ORDER BY reported DESC');
 
         while ($data = $req->fetch(\PDO::FETCH_ASSOC)) {
-            $comments[] = new Comments($data);
+            $comments[] = new Comment($data);
         }
         return $comments;
     }

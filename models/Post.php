@@ -4,7 +4,7 @@
 
 
 
-class Posts extends Hydrating
+class Post extends Hydrating
 {
     private $id;
     private $title;

@@ -41437,7 +41437,7 @@ define(
         }
 
         // If user manually calls destroy and not remove
-        // Users seems to have logic that calls destroy instead of remove
+        // User seems to have logic that calls destroy instead of remove
         if (!automatic && !self.removed) {
           self.remove();
           return;

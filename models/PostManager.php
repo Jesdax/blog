@@ -3,7 +3,7 @@
 
 
 
-class PostsManager extends Manager
+class PostManager extends Manager
 {
     private $db;
 
@@ -28,7 +28,7 @@ class PostsManager extends Manager
 
         $req = $this->db->query('SELECT id, title, content, DATE_FORMAT(post_date, \'%d.%m.%Y\')AS postDate FROM posts ORDER BY postDate DESC');
         while ($data = $req->fetch(\PDO::FETCH_ASSOC)) {
-            $posts[] = new Posts($data);
+            $posts[] = new Post($data);
         }
         return $posts;
     }
@@ -44,7 +44,7 @@ class PostsManager extends Manager
 
             $data = $req->fetch(\PDO::FETCH_ASSOC);
         }
-        return new Posts($data);
+        return new Post($data);
     }
 
     public function update($id, $title, $content)
@@ -81,7 +81,7 @@ class PostsManager extends Manager
             throw new \Exception('Impossible de sélectionner les articles pour la pagination.');
         } else {
             while ($data = $req->fetch(\PDO::FETCH_ASSOC)) {
-                $posts[] = new Posts($data);
+                $posts[] = new Post($data);
             }
             return $posts;
         }

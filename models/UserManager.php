@@ -2,7 +2,7 @@
 
 
 
-class UsersManager extends Manager
+class UserManager extends Manager
 {
     private $db;
 
@@ -11,12 +11,14 @@ class UsersManager extends Manager
         $this->db = $this->dbConnect();
     }
 
-    public function add(Users $admin)
+    public function add(User $admin)
     {
         $req = $this->db->prepare('INSERT INTO user (login, password) VALUES (:login, :pass)');
         $req->bindValue(':login', $admin->getLogin());
         $req->bindValue(':pass', password_hash($admin->getPassword(), PASSWORD_DEFAULT));
         $req->execute();
+
+        return $req;
     }
 
     public function exists($info)
@@ -31,7 +33,7 @@ class UsersManager extends Manager
         }
     }
 
-    public function update(Users $admin)
+    public function update(User $admin)
     {
         $req = $this->db->prepare('UPDATE user SET login = :login, password = :pass WHERE id = :id');
         $req->bindValue(':login', $admin->getLogin());
@@ -47,7 +49,7 @@ class UsersManager extends Manager
 
         $data = $req->fetch(\PDO::FETCH_ASSOC);
 
-        return new Users($data);
+        return new User($data);
     }
 
 
