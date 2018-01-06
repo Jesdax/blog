@@ -130,7 +130,7 @@ function connexion($login, $password)
             throw new Exception('Mot de passe incorrect.');
         } else {
             $_SESSION['administrateur'] = $user;
-            header('Location: index?backend=backOfficeView');
+            header('Location: index.php?backend=backOfficeView');
         }
     }
 }
