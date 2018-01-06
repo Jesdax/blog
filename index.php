@@ -228,7 +228,11 @@ require('controllers/controller.php');
                     }
                     break;
                 case 'sendMessage':
-                    sendMail();
+                    if (isset($_POST['name'], $_POST['mail'], $_POST['objet'], $_POST['message'])) {
+                        sendMail();
+                    } else {
+                        throw new Exception('Vous n\'avez pas remplis tout les champs');
+                    }
                     break;
 
                 default:
