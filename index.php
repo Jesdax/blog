@@ -27,6 +27,15 @@ require('controllers/controller.php');
 
             /* Fin de la route pour la création administrateur */
 
+        } elseif (isset($_POST['modify'])) {
+            if (!empty($_POST['login']) && !empty($_POST['pass'])) {
+                $_POST['login'] = htmlspecialchars($_POST['login']);
+                $_POST['pass'] = htmlspecialchars($_POST['pass']);
+                modifyAdmin();
+            } else {
+                throw new Exception('Impossible de mettre à jour les données');
+            }
+
         } elseif(isset($_POST['publish'])) {
             if(!empty($_POST['title']) && !empty($_POST['content'])) {
                 $_POST['title'] = htmlspecialchars($_POST['title']);
@@ -84,7 +93,7 @@ require('controllers/controller.php');
                     if(isset($_GET['id'], $_GET['page'])) {
                         $_GET['id'] = (int) $_GET['id'];
                         $_GET['page'] = (int) $_GET['page'];
-                        if($_GET['id'] > 0 && $_GET['page'] > 0) {
+                        if($_GET['id'] > 0 && $_GET['page'] >= 0) {
                             post($_GET['id'], $_GET['page']);
                         } else {
                             throw new Exception('Cet article n\'existe pas.');
@@ -123,6 +132,9 @@ require('controllers/controller.php');
                         break;
                     case 'addPost':
                         require('views/backend/editPost.php');
+                        break;
+                    case 'info':
+                        require('views/backend/infoView.php');
                         break;
                     case 'reported':
                         reported();
@@ -172,7 +184,7 @@ require('controllers/controller.php');
                         if($_GET['idComment'] > 0 && $_GET['idPost'] > 0 && $_GET['page'] > 0) {
                             reportComment($_GET['idComment'], $_GET['idPost'], $_GET['page']);
                         } else {
-                            throw new Exception('Ce commentaire ou cet article n\'existe pas.');
+                            throw new Exception('Ce commentaire ou cet article n\'existe pas');
                         }
                     } else {
                         throw new Exception('Aucun commentaire ou article n\'a été sélectionné.');

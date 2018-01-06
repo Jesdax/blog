@@ -30,7 +30,7 @@ if(!isset($_SESSION['administrateur'])) {
                                                 <abbr title="Modifier"><a href="index.php?backend=editPost&amp;id=<?=$post->getId(); ?>"><i class="fa fa-pencil"></i></a></abbr>
                                             </div>
                                             <div class="col-lg-4">
-                                                <abbr title="Supprimer"><a href="index.php?action=deletePost&amp;id=<?= $post->getId(); ?>"><i class="fa fa-trash"></i></a></abbr>
+                                                <abbr title="Supprimer"><a href="index.php?action=deletePost&amp;id=<?= $post->getId(); ?>" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer l\'article ?'));"><i class="fa fa-trash"></i></a></abbr>
                                             </div>
                                         </div>
                                     </div>

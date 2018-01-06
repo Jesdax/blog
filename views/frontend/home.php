@@ -32,23 +32,14 @@ include('views/template/header.php'); ?>
             <ul class="actions pagination">
 
                 <?php if($currentPage == 1) { ;?>
-
                     <li><a href="index.php?frontend=listPosts&amp;page=<?= $currentPage - 1 ?>" class="disabled button big previous">Page précédente</a></li>
-
                 <?php } else { ;?>
-
                     <li><a href="index.php?frontend=listPosts&amp;page=<?= $currentPage - 1 ?>" class="button big previous">Page précédente</a></li>
-
                 <?php } ;?>
-
                 <?php if($currentPage == $nbrPage) { ;?>
-
                     <li><a href="index.php?frontend=listPosts&amp;page=<?= $currentPage + 1 ?>" class="disabled button big next">Page Suivante</a></li>
-
                 <?php } else { ;?>
-
                     <li><a href="index.php?frontend=listPosts&amp;page=<?= $currentPage + 1 ?>" class="button big next">Page Suivante</a></li>
-
                 <?php } ;?>
 
             </ul>

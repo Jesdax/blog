@@ -7,11 +7,20 @@ class PostManager extends Manager
 {
     private $db;
 
+    /**
+     * PostManager constructor.
+     */
     public function __construct()
     {
         $this->db = $this->dbConnect();
     }
 
+    /**
+     * @param $title
+     * @param $content
+     *
+     * @return bool
+     */
     public function addPost($title, $content)
     {
         $req = $this->db->prepare('INSERT INTO posts (title, content, post_date) VALUES (:title, :content, NOW())');
@@ -19,9 +28,12 @@ class PostManager extends Manager
         $req->bindValue(':content', $content);
         $affectedLines = $req->execute();
 
-        return$affectedLines;
+        return $affectedLines;
     }
 
+    /**
+     * @return array
+     */
     public function getPosts()
     {
         $posts = [];
@@ -33,6 +45,11 @@ class PostManager extends Manager
         return $posts;
     }
 
+    /**
+     * @param $id
+     *
+     * @return Post
+     */
     public function getPost($id)
     {
         if (is_int($id)) {
@@ -47,6 +64,13 @@ class PostManager extends Manager
         return new Post($data);
     }
 
+    /**
+     * @param $id
+     * @param $title
+     * @param $content
+     *
+     * @return bool
+     */
     public function update($id, $title, $content)
     {
         $req = $this->db->prepare('UPDATE posts SET title = :title, content = :content WHERE id = :id');
@@ -58,17 +82,32 @@ class PostManager extends Manager
         return $affectedLines;
     }
 
+    /**
+     * @param $id
+     *
+     * @return int
+     */
     public function delete($id)
     {
         $req = $this->db->exec('DELETE FROM posts WHERE id = ' . $id);
         return $req;
     }
 
+    /**
+     * @return mixed
+     */
     public function count()
     {
         return $this->db->query('SELECT COUNT(*) FROM posts')->fetchColumn();
     }
 
+    /**
+     * @param $start
+     * @param $nbr
+     *
+     * @return array
+     * @throws Exception
+     */
     public function pagination($start, $nbr)
     {
         $posts = [];
@@ -87,6 +126,11 @@ class PostManager extends Manager
         }
     }
 
+    /**
+     * @param $id
+     *
+     * @return mixed
+     */
     public function exists($id)
     {
         if (is_int($id)) {

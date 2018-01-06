@@ -11,6 +11,11 @@ class Post extends Hydrating
     private $content;
     private $postDate;
 
+    /**
+     * Post constructor.
+     *
+     * @param array $data
+     */
     public function __construct(array $data)
     {
         parent::__construct($data);

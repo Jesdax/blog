@@ -8,11 +8,19 @@ class User
     public $login;
     public $password;
 
+    /**
+     * User constructor.
+     *
+     * @param $data
+     */
     public function __construct($data)
     {
         $this->hydrate($data);
     }
 
+    /**
+     * @param array $data
+     */
     public function hydrate(array $data)
     {
         foreach ($data as $key => $value) {

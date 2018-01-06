@@ -8,9 +8,9 @@ if(!isset($_SESSION['administrateur'])) {
 
             <div id="main">
                 <section class="post">
-                    <h1 style="text-align: center">Commentaires signalés</h1><br />
-                    <?php foreach($comments as $comment) { ;?>
 
+                    <h1 style="text-align: center">Commentaires signalés</h1><br />
+            <?php foreach($comments as $comment) { ;?>
                         <table>
                             <thead>
                                 <tr>
@@ -21,8 +21,11 @@ if(!isset($_SESSION['administrateur'])) {
                                     <th>Autoriser</th>
                                     <th>Supprimer</th>
                                 </tr>
+
                             </thead>
+
                             <tbody>
+
                                 <tr>
                                     <td><?= $comment->getAuthor(); ?></td>
                                     <td><?= nl2br($comment->getContent()); ?></td>
@@ -33,8 +36,8 @@ if(!isset($_SESSION['administrateur'])) {
                                 </tr>
                             </tbody>
                         </table>
+            <?php } ;?>
 
-    <?php } ;?>
 
 
 

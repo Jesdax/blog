@@ -23,7 +23,7 @@ include('views/template/header.php'); ?>
     <form action="index.php?action=postComment&amp;postId=<?= $post->getId(); ?>&amp;page=<?= $currentPage; ?>" method="post">
         <fieldset>
             <label for="author">Auteur</label>
-            <input type="text" name="author" id="author"/>
+            <input type="text" name="author" id="author" value="<?php if (isset($_SESSION['administrateur'])) { ;?>Jean Forteroche <?php } ;?>"/>
             <label for="comment">Commentaire</label>
         </fieldset>
         <textarea name="comment" id="comment"></textarea><br />
@@ -36,7 +36,12 @@ include('views/template/header.php'); ?>
             <div>
                 <?= nl2br(htmlspecialchars($comment->getContent())); ?>
             </div>
-            <a class="btn btn-default" href="index.php?action=report&amp;idComment=<?= $comment->getId()?>&amp;idPost=<?=$post->getId()?>&amp;page=<?= $currentPage; ?>">Signaler</a>
+
+            <?php if (isset($_SESSION['administrateur']))  { ;?>
+            <a class="fa fa-trash" href="index.php?action=deleteComment&amp;id=<?= $comment->getId();?>"> Supprimer le commentaire</a>
+            <?php } else {;?>
+            <a class="btn btn-default" href="index.php?action=report&amp;idComment=<?= $comment->getId();?>&amp;idPost=<?=$post->getId()?>&amp;page=<?= $currentPage; ?>">Signaler</a>
+            <?php };?>
         </div>
     <?php } ;?>
 </div>

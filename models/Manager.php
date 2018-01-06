@@ -6,6 +6,9 @@
 
 class Manager
 {
+    /**
+     * @return PDO
+     */
     protected function dbConnect()
     {
         try {

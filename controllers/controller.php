@@ -11,6 +11,10 @@ spl_autoload_register('loadClass');
 
 ## Fonctions généraux ##
 
+/*
+ *  Système de pagination liste des articles de la page d'accueil
+ * @param page courante
+ */
 function listPosts($currentPage)
 {
     $postsManager = new PostManager();
@@ -30,6 +34,10 @@ function listPosts($currentPage)
     }
  }
 
+ /*
+  * Affichage de l'article
+  *
+  */
  function post($id, $currentPage)
  {
      $postsManager = new PostManager();
@@ -51,6 +59,9 @@ function listPosts($currentPage)
      }
  }
 
+ /*
+  * Publication de commentaire dans l'article
+  */
  function postComment($postId, $author, $comment, $page)
  {
      $commentsManager = new CommentManager();
@@ -68,6 +79,9 @@ function listPosts($currentPage)
      }
  }
 
+ /*
+  * Signaler un commentaire
+  */
  function reportComment($id, $postId, $page)
  {
      $commentsManager = new CommentManager();
@@ -89,6 +103,9 @@ function listPosts($currentPage)
      }
  }
 
+ /*
+  * Affichage de la page de formulaire pour créer un compte admin
+  */
  function adminLog()
  {
      require('views/frontend/formAdminLog.php');
@@ -97,7 +114,9 @@ function listPosts($currentPage)
 
  ##  Session ##
 
-
+/*
+ * Connexion
+ */
 function connexion($login, $password)
 {
     $usersManager = new UserManager();
@@ -116,7 +135,9 @@ function connexion($login, $password)
     }
 }
 
-
+/*
+ * Créer un admin
+ */
 function createAdmin()
 {
     if ($_POST) {
@@ -129,24 +150,49 @@ function createAdmin()
         $result = $usersManager->add($admin);
 
         if ($result) {
-            echo 'Compte admin créer';
-            header('Location: index.php');
+            header('Location: index.php?backend=connexion');
         } else {
             throw new Exception('Echec de la création de compte admin');
         }
-
     } else {
         throw new Exception('Méthode ou paramètre invalide');
     }
 
 }
 
+function modifyAdmin()
+{
+    if ($_POST) {
+        $login = $_POST['login'];
+        $password = $_POST['pass'];
 
+        $array = ['login' => $login, 'password' => $password];
+        $admin = new User($array);
+        $usersManager = new UserManager();
+        $result = $usersManager->update($admin);
+
+        if ($result) {
+            header('Location: index.php?backend=backOfficeView');
+        } else {
+            throw new Exception('Echec de la modification du compte');
+        }
+    } else {
+        throw new Exception('Méthode ou paramètre invalide');
+    }
+}
+
+
+/*
+ * Si l'admin est connecté
+ */
 function isConnect()
 {
     return isset($_SESSION['administrateur']);
 }
 
+/*
+ * Pour se déconnecter
+ */
 function logout()
 {
     if (!isset($_SESSION['administrateur'])) {
@@ -160,7 +206,9 @@ function logout()
 
 ## Partie administrateur ##
 
-
+/*
+ * Ajouter un article
+ */
 function addPost($title, $content)
 {
     $postsManager = new PostManager();
@@ -173,6 +221,9 @@ function addPost($title, $content)
     }
 }
 
+/*
+ * Editer un article
+ */
 function editPost($id)
 {
     $postsManager = new PostManager();
@@ -187,6 +238,9 @@ function editPost($id)
     }
 }
 
+/*
+ * Mettre à jour un article
+ */
 function updatePost($id, $title, $content)
 {
     $postsManager = new PostManager();
@@ -203,6 +257,9 @@ function updatePost($id, $title, $content)
     }
 }
 
+/*
+ * Supprimer un article
+ */
 function deletePost($postId)
 {
     $postsManager = new PostManager();
@@ -221,6 +278,9 @@ function deletePost($postId)
     }
 }
 
+/*
+ * Supprimer un commentaire
+ */
 function deleteComment($id)
 {
     $commentsManager = new CommentManager();
@@ -232,11 +292,14 @@ function deleteComment($id)
         if ($affectedLines == 0) {
             throw new Exception('Impossible de supprimer ce commentaire.');
         } else {
-            header('Location: index.php?backend=reported');
+            header('Location: index.php?backend=backOfficeView');
         }
     }
 }
 
+/*
+ * Valider un commentaire
+ */
 function auth($id)
 {
     $commentsManager = new CommentManager();
@@ -256,6 +319,9 @@ function auth($id)
 
 /* Dashboard administration */
 
+/*
+ * Liste de tous les articles en backend
+ */
 function backendListPosts()
 {
     $postsManager = new PostManager();
@@ -266,15 +332,21 @@ function backendListPosts()
     require('views/backend/listPostsView.php');
 }
 
+/*
+ * Dashbord admin
+ */
 function backOffice()
 {
-    $commentsManager = new CommentManager();
-    $postsManager = new PostManager();
+    $commentsManager = new CommentManager(); // requis pour afficher le compteur de commentaire et signalements
+    $postsManager = new PostManager();  // requis pour afficher le compteur d'article
 
     /* require la vue backend du backoffice */
     require('views/backend/backOfficeView.php');
 }
 
+/*
+ * Voir les commentaires signalés
+ */
 function reported()
 {
     $commentsManager = new CommentManager();
@@ -287,11 +359,17 @@ function reported()
 
 /* Contact */
 
+/*
+ * Formulaire de contact
+ */
 function contact()
 {
     require('views/frontend/contact.php');
 }
 
+/*
+ * Envoie de mail contact
+ */
 function sendMail()
 {
     $contact = new Mailer();

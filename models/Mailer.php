@@ -9,6 +9,7 @@ class Mailer
                 $email,
                 $destinataire = 'augustin.kavera@gmail.com';
 
+
     public function message()
     {
         extract($_POST);
@@ -17,6 +18,7 @@ class Mailer
         $this->objet = htmlspecialchars('objet');
         $this->message = htmlspecialchars('message');
     }
+
 
     public function sendMail()
     {
