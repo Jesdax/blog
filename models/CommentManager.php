@@ -105,6 +105,8 @@ class CommentManager extends Manager
 
     /**
      * @param $postId
+     *
+     * @return PDOStatement
      */
     public function deletePostComments($postId)
     {

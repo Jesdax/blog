@@ -48,6 +48,8 @@ class UserManager extends Manager
 
     /**
      * @param User $admin
+     *
+     * @return PDOStatement
      */
     public function update(User $admin)
     {

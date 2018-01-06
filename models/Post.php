@@ -83,7 +83,7 @@ class Post extends Hydrating
     }
 
     /**
-     * @param string $postDate
+     * @param $date
      */
     public function setPostDate($date)
     {
