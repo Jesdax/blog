@@ -61,7 +61,15 @@ include('views/template/header.php'); ?>
 
             <!-- Mini Post Carousel-->
             <div>
-                <div><a href="public/images/aurore_boreal.jpg"><img class="imgHome" alt="Aurore boreal" src="public/images/aurore_boreal_mini.jpg" title="Cliquez pour agrandir"/></a></div>
+                <div id="slider">
+                    <figure>
+                        <img class="imgHome" alt="Aurore boreal" src="public/images/aurore_boreal_mini.jpg"/>
+                        <img class="imgHome" alt="Aurore boreal" src="public/images/alaska.jpg"/>
+                        <img class="imgHome" alt="Aurore boreal" src="public/images/alaska_snow.jpg"/>
+                        <img class="imgHome" alt="Aurore boreal" src="public/images/glacier.jpg"/>
+                        <img class="imgHome" alt="Aurore boreal" src="public/images/bearpolar.jpg"/>
+                    </figure>
+                </div>
             </div>
 
             <!-- About -->
