@@ -102,7 +102,7 @@
                     <li><a href="?disconnect=1" class="button big fit">Se déconnecter</a></li>
                 <?php } else { ;?>
                     <li><a href="index.php?backend=backOfficeView" class="button big fit">Se connecter</a></li>
-                    <li><a href="index.php?frontend=formAdminLog" class="button big fit">Créer un compte admin</a></li>
+                    <li><a href="index.php?frontend=formAdminLog" class="button big fit disabled">Créer un compte admin</a></li>
                 <?php } ;?>
             </ul>
         </section>
