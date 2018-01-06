@@ -31,7 +31,7 @@ require('controllers/controller.php');
             if (!empty($_POST['login']) && !empty($_POST['pass'])) {
                 $_POST['login'] = htmlspecialchars($_POST['login']);
                 $_POST['pass'] = htmlspecialchars($_POST['pass']);
-                modifyAdmin();
+                changePsw();
             } else {
                 throw new Exception('Impossible de mettre à jour les données');
             }

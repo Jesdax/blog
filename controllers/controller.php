@@ -160,7 +160,7 @@ function createAdmin()
 
 }
 
-function modifyAdmin()
+function changePsw()
 {
     if ($_POST) {
         $login = $_POST['login'];

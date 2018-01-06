@@ -63,12 +63,40 @@ include('views/template/header.php'); ?>
             <div>
                 <div id="slider">
                     <figure>
-                        <img class="imgHome" alt="Aurore boreal" src="public/images/aurore_boreal_mini.jpg"/>
-                        <img class="imgHome" alt="Aurore boreal" src="public/images/alaska.jpg"/>
-                        <img class="imgHome" alt="Aurore boreal" src="public/images/alaska_snow.jpg"/>
-                        <img class="imgHome" alt="Aurore boreal" src="public/images/glacier.jpg"/>
-                        <img class="imgHome" alt="Aurore boreal" src="public/images/bearpolar.jpg"/>
+                        <img class="imgHome" alt="Alaska " src="public/images/andrew-ly-152153.jpg"/>
+                        <img class="imgHome" alt="Alaska " src="public/images/arto-marttinen-250319.jpg"/>
+                        <img class="imgHome" alt="Alaska " src="public/images/bryan-goff-411730.jpg"/>
+                        <img class="imgHome" alt="Alaska " src="public/images/dominik-dombrowski-80197.jpg"/>
+                        <img class="imgHome" alt="Alaska " src="public/images/garrett-parker-247225.jpg"/>
                     </figure>
+                    <!--<figure>
+                        <img class="imgHome" alt="Alaska " src="public/images/guille-pozzi-375041.jpg"/>
+                        <img class="imgHome" alt="Alaska " src="public/images/holly-mandarich-259849.jpg"/>
+                        <img class="imgHome" alt="Alaska " src="public/images/jack-ross-371733.jpg"/>
+                        <img class="imgHome" alt="Alaska " src="public/images/jonatan-pie-183185.jpg"/>
+                        <img class="imgHome" alt="Alaska " src="public/images/justine-milton-166118.jpg"/>
+                    </figure>
+                    <figure>
+                        <img class="imgHome" alt="Alaska " src="public/images/kalen-emsley-99659.jpg"/>
+                        <img class="imgHome" alt="Alaska " src="public/images/levi-saunders-392328.jpg"/>
+                        <img class="imgHome" alt="Alaska " src="public/images/mark-morones-358182.jpg"/>
+                        <img class="imgHome" alt="Alaska " src="public/images/matt-howard-44749.jpg"/>
+                        <img class="imgHome" alt="Alaska " src="public/images/matthew-sleeper-124918.jpg"/>
+                    </figure>
+                    <figure>
+                        <img class="imgHome" alt="Alaska " src="public/images/melissa-chabot-100929.jpg"/>
+                        <img class="imgHome" alt="Alaska " src="public/images/nelly-volkovich-16093.jpg"/>
+                        <img class="imgHome" alt="Alaska " src="public/images/nico-e-197932.jpg"/>
+                        <img class="imgHome" alt="Alaska " src="public/images/spencer-watson-367233.jpg"/>
+                        <img class="imgHome" alt="Alaska " src="public/images/steve-halama-258335.jpg"/>
+                    </figure>
+                    <figure>
+                        <img class="imgHome" alt="Alaska " src="public/images/steve-halama-287949.jpg"/>
+                        <img class="imgHome" alt="Alaska " src="public/images/steve-halama-324726.jpg"/>
+                        <img class="imgHome" alt="Alaska " src="public/images/thomas-lefebvre-433.jpg"/>
+                        <img class="imgHome" alt="Alaska " src="public/images/todd-diemer-160708.jpg"/>
+                        <img class="imgHome" alt="Alaska " src="public/images/vincent-guth-183404.jpg"/>
+                    </figure>-->
                 </div>
             </div>
 
@@ -80,8 +108,6 @@ include('views/template/header.php'); ?>
                     <li><a href="#" class="button">En savoir plus</a></li>
                 </ul>
             </section>
-
-
 
             <!-- Footer -->
             <section id="footer">

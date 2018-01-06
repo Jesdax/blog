@@ -796,6 +796,8 @@ input[type="button"].btn-block {
     width: auto;
 }
 
+/* CSS pour le carousel */
+
 @keyframes slidy {
     0% { left: 0%; }
     20% { left: 0%; }

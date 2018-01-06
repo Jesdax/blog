@@ -38,7 +38,7 @@ class PostManager extends Manager
     {
         $posts = [];
 
-        $req = $this->db->query('SELECT id, title, content, DATE_FORMAT(post_date, \'%d.%m.%Y\')AS postDate FROM posts ORDER BY postDate DESC');
+        $req = $this->db->query('SELECT id, title, content, DATE_FORMAT(post_date, \'%d.%m.%Y\')AS postDate FROM posts ORDER BY postDate');
         while ($data = $req->fetch(\PDO::FETCH_ASSOC)) {
             $posts[] = new Post($data);
         }
@@ -53,7 +53,9 @@ class PostManager extends Manager
     public function getPost($id)
     {
         if (is_int($id)) {
-            $req = $this->db->query('SELECT id, title, content, DATE_FORMAT(post_date, \'%d.%m.%Y\')AS postDate FROM posts WHERE id = ' . $id);
+            $req = $this->db->prepare('SELECT id, title, content, DATE_FORMAT(post_date, \'%d.%m.%Y\')AS postDate FROM posts WHERE id = :id');
+            $req->bindValue(':id', $id);
+            $req->execute();
             $data = $req->fetch(\PDO::FETCH_ASSOC);
         } else {
             $req = $this->db->prepare('SELECT id, title, content, DATE_FORMAT(post_date, \'%d.%m.%Y\')AS postDate FROM posts WHERE title = :title');
@@ -63,6 +65,7 @@ class PostManager extends Manager
         }
         return new Post($data);
     }
+
 
     /**
      * @param $id
@@ -142,6 +145,8 @@ class PostManager extends Manager
             return $req->fetchColumn();
         }
     }
+
+
 
 
 }
