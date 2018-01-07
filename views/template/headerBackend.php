@@ -12,6 +12,7 @@
         <link href="public/css/panel.css" rel="stylesheet">
         <link href="public/css/style.css" rel="stylesheet"/>
         <link rel="stylesheet" href="public/css/snow.css"/>
+        <link rel="icon" href="public/images/favicon.ico"/>
         <?= $scriptTinyMCE ; ?><br />
         <?= $scriptTinyMCE2 ; ?>
 

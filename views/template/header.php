@@ -11,6 +11,7 @@
     <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
     <link rel="stylesheet" href="public/css/style.css"/>
     <link rel="stylesheet" href="public/css/snow.css"/>
+    <link rel="icon" href="public/images/favicon.ico"/>
 </head>
 <body>
 
