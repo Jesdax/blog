@@ -13,10 +13,10 @@ class Mailer
     public function message()
     {
         extract($_POST);
-        $this->expediteur = htmlspecialchars('name');
-        $this->email = htmlspecialchars('mail');
-        $this->objet = htmlspecialchars('objet');
-        $this->message = htmlspecialchars('message');
+        $this->expediteur = htmlspecialchars($name);
+        $this->email = htmlspecialchars($mail);
+        $this->objet = htmlspecialchars($objet);
+        $this->message = htmlspecialchars($message);
     }
 
 

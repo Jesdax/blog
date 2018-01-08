@@ -29,7 +29,6 @@ require('controllers/controller.php');
 
         } elseif (isset($_POST['sendMessage'])) {
            if (isset($_POST) && !empty($_POST['name'] && !empty($_POST['mail']) && !empty($_POST['objet']) && !empty($_POST['message']))) {
-
                sendMail();
            } else {
                throw new Exception('Remplissez tous les champs');
