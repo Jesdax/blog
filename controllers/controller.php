@@ -258,7 +258,7 @@ function updatePost($id, $title, $content)
 }
 
 /*
- * Supprimer un article
+ * Supprimer un article et les commentaires associés
  */
 function deletePost($postId)
 {
@@ -374,6 +374,8 @@ function sendMail()
 {
     $contact = new Mailer();
     $contact->sendMail();
+    var_dump($contact); die;
+
 }
 
 

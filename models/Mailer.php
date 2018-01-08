@@ -3,7 +3,7 @@
 
 class Mailer
 {
-    protected   $message,
+    public      $message,
                 $objet,
                 $expediteur,
                 $email,
@@ -24,6 +24,7 @@ class Mailer
     {
         $this->message();
 
+        $destinataire = $this->destinataire;
         $name = $this->expediteur;
         $mail = $this->email;
         $objet = $this->objet;
@@ -34,10 +35,10 @@ class Mailer
 
         $message = '<div style="width: 100%; text-align: center; font-weight: bold">'.$this->message.'</div>';
 
-        if (mail($name, $objet, $message, $headers)) {
+        if (mail($destinataire, $objet, $message, $headers)) {
             echo '<div class="alert col-lg-4 col-lg-offset-4 alert-success text-center"> L\'email a bien été envoyé</div>';
         } else {
-            echo '<div class="alert col-lg-4 col-lg-offset-4 alert-danger text-center">Une erreur est survenur, votre email n\'a pas été envoyé.</div>';
+            echo '<div class="alert col-lg-4 col-lg-offset-4 alert-danger text-center">Une erreur est survenue, votre email n\'a pas été envoyé.</div>';
         }
     }
 

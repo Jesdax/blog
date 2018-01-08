@@ -15,6 +15,7 @@ class CommentManager extends Manager
     }
 
     /**
+     * Poster un commentaire
      * @param $postId
      * @param $author
      * @param $content
@@ -33,6 +34,7 @@ class CommentManager extends Manager
     }
 
     /**
+     * Obtenir les commentaires selon l'id d'un article
      * @param $postId
      *
      * @return array
@@ -51,6 +53,7 @@ class CommentManager extends Manager
     }
 
     /**
+     * Obtient le commentaire selon son id
      * @param $id
      *
      * @return Comment
@@ -65,6 +68,7 @@ class CommentManager extends Manager
 
 
     /**
+     * Reporter un commentaire
      * @param $id
      *
      * @return bool
@@ -78,6 +82,7 @@ class CommentManager extends Manager
     }
 
     /**
+     * Obtenir les commentaires reportés
      * @return array
      */
     public function getReported()
@@ -92,6 +97,7 @@ class CommentManager extends Manager
     }
 
     /**
+     * Supprimer un commentaire
      * @param $id
      *
      * @return int
@@ -104,6 +110,7 @@ class CommentManager extends Manager
     }
 
     /**
+     * Supprime les commentaires associés à l'article
      * @param $postId
      *
      * @return PDOStatement
@@ -118,6 +125,7 @@ class CommentManager extends Manager
     }
 
     /**
+     * Nombre de commentaires
      * @return mixed
      */
     public function count()
@@ -126,6 +134,7 @@ class CommentManager extends Manager
     }
 
     /**
+     * Nombre de commentaire reportés
      * @return mixed
      */
     public function countReported()
@@ -134,6 +143,7 @@ class CommentManager extends Manager
     }
 
     /**
+     * Si le commentaire exists dans la base de données
      * @param $id
      *
      * @return bool
@@ -147,6 +157,7 @@ class CommentManager extends Manager
     }
 
     /**
+     * Mis a jour pour les commentaires valider
      * @param $id
      *
      * @return bool

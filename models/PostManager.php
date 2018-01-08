@@ -16,6 +16,7 @@ class PostManager extends Manager
     }
 
     /**
+     * Ajouter un article
      * @param $title
      * @param $content
      *
@@ -32,6 +33,7 @@ class PostManager extends Manager
     }
 
     /**
+     * Obtenir la liste des articles
      * @return array
      */
     public function getPosts()
@@ -46,6 +48,7 @@ class PostManager extends Manager
     }
 
     /**
+     * Obtenir un article
      * @param $id
      *
      * @return Post
@@ -68,6 +71,7 @@ class PostManager extends Manager
 
 
     /**
+     * Mise à jour d'un article
      * @param $id
      * @param $title
      * @param $content
@@ -86,6 +90,7 @@ class PostManager extends Manager
     }
 
     /**
+     * Supprimer un article
      * @param $id
      *
      * @return int
@@ -97,6 +102,7 @@ class PostManager extends Manager
     }
 
     /**
+     * Nombre d'article
      * @return mixed
      */
     public function count()
@@ -105,6 +111,7 @@ class PostManager extends Manager
     }
 
     /**
+     * Pagination
      * @param $start
      * @param $nbr
      *
@@ -130,6 +137,7 @@ class PostManager extends Manager
     }
 
     /**
+     * Si l'article existe
      * @param $id
      *
      * @return mixed

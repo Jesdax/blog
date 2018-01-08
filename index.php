@@ -27,6 +27,13 @@ require('controllers/controller.php');
 
             /* Fin de la route pour la création administrateur */
 
+        } elseif (isset($_POST['sendMessage'])) {
+           if (isset($_POST) && !empty($_POST['name'] && !empty($_POST['mail']) && !empty($_POST['objet']) && !empty($_POST['message']))) {
+
+               sendMail();
+           } else {
+               throw new Exception('Remplissez tous les champs');
+           }
         } elseif (isset($_POST['modify'])) {
             if (!empty($_POST['login']) && !empty($_POST['pass'])) {
                 $_POST['login'] = htmlspecialchars($_POST['login']);
@@ -225,13 +232,6 @@ require('controllers/controller.php');
                         }
                     } else {
                         throw new Exception('Aucun commentaire n\'a été sélectionné.');
-                    }
-                    break;
-                case 'sendMessage':
-                    if (isset($_POST['name'], $_POST['mail'], $_POST['objet'], $_POST['message'])) {
-                        sendMail();
-                    } else {
-                        throw new Exception('Vous n\'avez pas remplis tout les champs');
                     }
                     break;
 
