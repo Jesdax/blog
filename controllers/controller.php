@@ -372,9 +372,13 @@ function contact()
  */
 function sendMail()
 {
+
     $contact = new Mailer();
+
     $contact->sendMail();
-    var_dump($contact); die;
+    require('views/template/header.php');
+    require('views/template/scriptBody.php');
+
 
 }
 

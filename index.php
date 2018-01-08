@@ -28,7 +28,7 @@ require('controllers/controller.php');
             /* Fin de la route pour la création administrateur */
 
         } elseif (isset($_POST['sendMessage'])) {
-           if (isset($_POST) && !empty($_POST['name'] && !empty($_POST['mail']) && !empty($_POST['objet']) && !empty($_POST['message']))) {
+           if (!empty($_POST['name'] && !empty($_POST['mail']) && !empty($_POST['objet']) && !empty($_POST['message']))) {
                sendMail();
            } else {
                throw new Exception('Remplissez tous les champs');
